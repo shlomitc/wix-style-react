@@ -1,33 +1,55 @@
 import React from 'react';
-import {string} from 'prop-types';
+import {string, object} from 'prop-types';
 import {mount} from 'enzyme';
-import WixStyleProvider, {withTheme} from './index';
+import WixStyleProvider from './index';
 
-class Component extends React.Component {
-  static propTypes = {
-    theme: string
-  };
+const Component = (props, context) => (
+  <div id="component">
+    {`Theme is ${context.theme} and color is ${context.wixTpaStyles.color}`}
+  </div>
+);
 
-  render() {
-    const {theme} = this.props;
-    return <div id="component">{`Theme is ${theme}`}</div>;
-  }
-}
+Component.contextTypes = {
+  theme: string,
+  wixTpaStyles: object
+};
 
-const WrappedComponent = withTheme(Component);
 
 describe('WixStyleProvider', () => {
-  it('should render the wrapped component with the correct theme', () => {
+  it('should render the wrapped component with the correct props and context', () => {
     const theme = 'backoffice';
-    const children = 'Theme is ' + theme;
+    const color = 'green';
+    const children = `Theme is ${theme} and color is ${color}`;
 
     const wrapper = mount(
-      <WixStyleProvider theme={theme}>
-        <WrappedComponent/>
+      <WixStyleProvider theme={theme} wixTpaStyles={{color}}>
+        <Component/>
       </WixStyleProvider>
       );
 
     expect(wrapper.html()).toBe(`<div id="component">${children}</div>`);
     expect(wrapper.text()).toBe(children);
+  });
+
+  it('should have core theme by default', () => {
+    const color = 'green';
+
+    const wrapper = mount(
+      <WixStyleProvider wixTpaStyles={{color}}>
+        <Component/>
+      </WixStyleProvider>
+      );
+
+    expect(wrapper.text()).toBe(`Theme is core and color is ${color}`);
+  });
+
+  it('should have empty wixTpaStyles object by default', () => {
+    const wrapper = mount(
+      <WixStyleProvider theme="deviantArt">
+        <Component/>
+      </WixStyleProvider>
+      );
+
+    expect(wrapper.text()).toBe('Theme is deviantArt and color is undefined');
   });
 });

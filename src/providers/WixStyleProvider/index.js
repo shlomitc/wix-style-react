@@ -31,13 +31,3 @@ WixStyleProvider.childContextTypes = {
   theme: oneOf(supportedThemes),
   wixTpaStyles: object
 };
-
-export function withTheme(WrappedComponent) {
-  const ThemeWrapper = (props, {theme}) => <WrappedComponent {...{...props, theme}}/>;
-
-  ThemeWrapper.contextTypes = {
-    theme: oneOf(supportedThemes)
-  };
-
-  return ThemeWrapper;
-}
