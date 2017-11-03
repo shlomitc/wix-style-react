@@ -1,21 +1,40 @@
-import React from 'react';
-import WixStyleProvider from '../../../src/providers/WixStyleProvider';
-import {storiesOf} from '@storybook/react';
-import Button from '../../../src/components/Button';
+  import React from 'react';
+  import CodeExample from '../../utils/Components/CodeExample';
 
-const wixTpaStyles = {
-  color: 'green',
-  backgroundColor: 'pink',
-  fontSize: '30px',
-  borderColor: 'black'
-};
+  import ExampleControlled from './ExampleControlled';
+  import ExampleControlledRaw from '!raw-loader!./ExampleControlled';
+  import IconsExample from './ExampleWithIcons';
+  import IconsExampleRaw from '!raw-loader!./ExampleWithIcons';
 
-storiesOf('Core', module)
-  .add('Button', () => (
-    <WixStyleProvider theme="backoffice" wixTpaStyles={wixTpaStyles}>
+  import story from '../../utils/Components/Story';
+  import * as Icons from 'wix-style-react/Icons';
+
+  const icons = Object.values(Icons).map(icon => React.createElement(icon));
+
+  story({
+    category: 'Backoffice',
+    storyName: 'Button',
+    componentSrcFolder: 'Backoffice/Button',
+    componentProps: {
+      disabled: false,
+      theme: 'fullblue',
+      children: 'Click Me'
+    },
+    exampleProps: {
+      onClick: () => 'Clicked!',
+      onMouseEnter: () => 'Mouse Enter!',
+      onMouseLeave: () => 'Mouse Leave!',
+      prefixIcon: icons,
+      suffixIcon: icons
+    },
+    examples: (
       <div>
-        <Button onClick={() => console.log('1')}>Hello</Button><br/><br/>
-        <Button onClick={() => console.log('2')}>Hey</Button>
+        <CodeExample title="With icons" code={IconsExampleRaw}>
+          <IconsExample/>
+        </CodeExample>
+        <CodeExample title="Controlled" code={ExampleControlledRaw}>
+          <ExampleControlled/>
+        </CodeExample>
       </div>
-    </WixStyleProvider>
-  ));
+    )
+  });
