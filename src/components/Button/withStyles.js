@@ -1,10 +1,12 @@
 import React from 'react';
-import {object} from 'prop-types';
+import {string, object} from 'prop-types';
 import {css} from 'glamor';
 
-export function withTpaStyles(WrappedComponent) {
-  const TpaStylesWrapper = (props, {wixTpaStyles}) => {
+export function withStyles(WrappedComponent) {
+  const StylesWrapper = (props, {theme, wixTpaStyles}) => {
+    const styles = require(`./themes/Button-${theme}.scss`);
     let className = '';
+
     if (Object.keys(wixTpaStyles).length > 0) {
       const {color, backgroundColor, fontSize, borderColor} = wixTpaStyles;
 
@@ -18,15 +20,16 @@ export function withTpaStyles(WrappedComponent) {
           color: 'black',
           opacity: '0.5'
         }
-      });
+      }).toString();
     }
-    console.log('className', className);
-    return <WrappedComponent {...{...props, className}}/>;
+
+    return <WrappedComponent {...{...props, theme, wixStyles: {...styles, tpa: className}}}/>;
   };
 
-  TpaStylesWrapper.contextTypes = {
+  StylesWrapper.contextTypes = {
+    theme: string,
     wixTpaStyles: object
   };
 
-  return TpaStylesWrapper;
+  return StylesWrapper;
 }

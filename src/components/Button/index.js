@@ -1,9 +1,8 @@
 import React from 'react';
-import {func, node, string, bool, oneOf} from 'prop-types';
+import {func, object, node, string, bool, oneOf} from 'prop-types';
 import WixComponent from '../../BaseComponents/WixComponent';
 import classNames from 'classnames';
-import {withTheme} from '../../providers/WixStyleProvider';
-import {withTpaStyles} from './withTpaStyles';
+import {withStyles} from './withStyles';
 
 class Button extends WixComponent {
   static propTypes = {
@@ -19,7 +18,7 @@ class Button extends WixComponent {
     disabled: bool,
     height: oneOf(['small', 'medium', 'large']),
     hover: bool,
-    classname: string,
+    wixStyles: object,
     skin: oneOf([
       'transparent',
       'fullred',
@@ -55,7 +54,6 @@ class Button extends WixComponent {
 
   constructor(props) {
     super(props);
-    this.styles = require(`./themes/Button-${props.theme}.scss`);
     this.addPrefix = this.addPrefix.bind(this);
     this.addSuffix = this.addSuffix.bind(this);
     this.addIcon = this.addIcon.bind(this);
@@ -63,7 +61,8 @@ class Button extends WixComponent {
 
   addIcon(className, icon, height) {
     const iconSize = height === 'small' ? '8px' : height === 'medium' ? '12px' : '16px';
-    const dataHook = className === this.styles.prefix ? 'btn-prefix' : 'btn-suffix';
+    const dataHook = className === this.props.wixStyles.prefix ? 'btn-prefix' : 'btn-suffix';
+
     return (
       icon ?
         <div className={className} data-hook={dataHook}>
@@ -74,28 +73,31 @@ class Button extends WixComponent {
   }
 
   addPrefix() {
-    return this.addIcon(this.styles.prefix, this.props.prefixIcon, this.props.height);
+    const {wixStyles, prefixIcon, height} = this.props;
+    return this.addIcon(wixStyles.prefix, prefixIcon, height);
   }
 
   addSuffix() {
-    return this.addIcon(this.styles.suffix, this.props.suffixIcon, this.props.height);
+    const {wixStyles, suffixIcon, height} = this.props;
+    return this.addIcon(wixStyles.suffix, suffixIcon, height);
   }
 
   render() {
-    const {disabled, onClick, children, type, onMouseEnter, onMouseLeave, skin, hover, active, height} = this.props;
+    const {disabled, onClick, children, type, onMouseEnter, onMouseLeave, skin, hover, active, height, wixStyles} = this.props;
 
-    const className = classNames({
-      [this.styles.button]: true,
-      [this.styles[skin]]: true,
-      [this.styles.hover]: hover,
-      [this.styles.active]: active,
-      [this.styles.disabled]: disabled,
-      [this.styles[`height${height}`]]: height !== 'medium'
+    const classes = classNames({
+      [wixStyles.button]: true,
+      [wixStyles[skin]]: true,
+      [wixStyles.hover]: hover,
+      [wixStyles.active]: active,
+      [wixStyles.disabled]: disabled,
+      [wixStyles[`height${height}`]]: height !== 'medium',
+      [wixStyles.tpa]: !!wixStyles.tpa
     });
 
     return (
       <button
-        className={`${className} ${this.props.className}`}
+        className={classes}
         onClick={onClick}
         disabled={disabled}
         type={type}
@@ -112,4 +114,4 @@ class Button extends WixComponent {
 
 Button.displayName = 'Button';
 
-export default withTheme(withTpaStyles(Button));
+export default withStyles(Button);

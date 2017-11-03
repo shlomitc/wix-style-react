@@ -20,6 +20,10 @@ WixStyleProvider.propTypes = {
   wixTpaStyles: PropTypes.object
 };
 
+WixStyleProvider.defaultProps = {
+  wixTpaStyles: {}
+};
+
 WixStyleProvider.childContextTypes = {
   theme: PropTypes.string.isRequired,
   wixTpaStyles: PropTypes.object
