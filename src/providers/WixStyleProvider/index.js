@@ -1,7 +1,8 @@
 import React, {Children} from 'react';
-import PropTypes from 'prop-types';
+import {any, oneOf, object} from 'prop-types';
 
 const supportedThemes = ['core', 'backoffice', 'deviantArt'];
+
 export default class WixStyleProvider extends React.PureComponent {
   render() {
     return Children.only(this.props.children);
@@ -16,9 +17,9 @@ export default class WixStyleProvider extends React.PureComponent {
 }
 
 WixStyleProvider.propTypes = {
-  children: PropTypes.any,
-  theme: PropTypes.oneOf(supportedThemes),
-  wixTpaStyles: PropTypes.object
+  children: any,
+  theme: oneOf(supportedThemes),
+  wixTpaStyles: object
 };
 
 WixStyleProvider.defaultProps = {
@@ -27,6 +28,16 @@ WixStyleProvider.defaultProps = {
 };
 
 WixStyleProvider.childContextTypes = {
-  theme: PropTypes.oneOf(supportedThemes),
-  wixTpaStyles: PropTypes.object
+  theme: oneOf(supportedThemes),
+  wixTpaStyles: object
 };
+
+export function withTheme(WrappedComponent) {
+  const ThemeWrapper = (props, {theme}) => <WrappedComponent {...{...props, theme}}/>;
+
+  ThemeWrapper.contextTypes = {
+    theme: oneOf(supportedThemes)
+  };
+
+  return ThemeWrapper;
+}
