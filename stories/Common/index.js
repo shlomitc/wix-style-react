@@ -1,9 +1,7 @@
 import React from 'react';
-import {storiesOf} from '@storybook/react';
-import CodeExample from '../utils/Components/CodeExample';
-import Markdown from '../utils/Components/Markdown';
 
-import Readme from '../../src/Typography/README.md';
+import story from '../utils/Components/Story';
+import CodeExample from '../utils/Components/CodeExample';
 
 import ExampleHeadersTypography from './ExampleHeadersTypography';
 import ExampleHeaderTypographyRaw from '!raw-loader!./ExampleHeadersTypography';
@@ -11,11 +9,24 @@ import ExampleHeaderTypographyRaw from '!raw-loader!./ExampleHeadersTypography';
 import ExampleTextTypography from './ExampleTextTypography';
 import ExampleTextTypographyRaw from '!raw-loader!./ExampleTextTypography';
 
-storiesOf('Common', module)
-  .add('Typography', () => (
-    <div>
-      <Markdown source={Readme}/>
+const children = [
+  'Hello World!',
+  <span key={0}>Hello <strong>World!</strong></span>,
+  'Hello World! '.repeat(5)
+];
 
+story({
+  category: 'Common',
+  storyName: 'Typography',
+  componentSrcFolder: 'Text',
+  componentProps: {
+    children: 'Hello, World!'
+  },
+  exampleProps: {
+    children
+  },
+  examples: (
+    <div>
       <CodeExample title="Headers" code={ExampleHeaderTypographyRaw}>
         <ExampleHeadersTypography/>
       </CodeExample>
@@ -24,4 +35,5 @@ storiesOf('Common', module)
         <ExampleTextTypography/>
       </CodeExample>
     </div>
-  ));
+  )
+});

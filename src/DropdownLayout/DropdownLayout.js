@@ -210,7 +210,7 @@ class DropdownLayout extends WixComponent {
     return (
       <div
         className={optionClassName}
-        onClick={!disabled ? () => this._onSelect(idx) : null}
+        onMouseDown={!disabled ? () => this._onSelect(idx) : null}
         key={idx}
         onMouseEnter={() => this._onMouseEnter(idx)}
         onMouseLeave={this._onMouseLeave}

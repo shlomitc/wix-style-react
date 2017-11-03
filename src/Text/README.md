@@ -1,6 +1,9 @@
-# Typography
+# `<Text/>`
 
-The supported way to type text Wix style:
+General all purpose text component with Wix styling.
+
+* Adds correct styling so you don't have to.
+* Renders correct element (either `span` or `h1` - `h5`) depending on `appearance` (defaults to `span`)
 
 1. Load Wix fonts from CDN:
 
@@ -9,8 +12,9 @@ The supported way to type text Wix style:
 ```
 
 2. Use `<Text>` component with appropriate `appearance`:
+
 ```js
-import { Text } from 'wix-style-react';
+import Text from 'wix-style-react/Text';
 
 export default () =>
   <div>
