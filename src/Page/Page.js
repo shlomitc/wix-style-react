@@ -100,14 +100,15 @@ class Page extends WixComponent {
           style={pageHeaderStyle}
           >
           {PageHeader && React.cloneElement(PageHeader, {minimized, hasBackgroundImage})}
-          {PageTail &&
-          <div
-            data-hook="page-tail"
-            className={classNames(s.tail, {[s.minimized]: minimized})}
-            ref={r => this.pageHeaderTailRef = r}
-            >
-            {PageTail}
-          </div>
+          {
+            PageTail &&
+              <div
+                data-hook="page-tail"
+                className={classNames(s.tail, {[s.minimized]: minimized})}
+                ref={r => this.pageHeaderTailRef = r}
+                >
+                {PageTail}
+              </div>
           }
         </div>
         <div
@@ -115,17 +116,18 @@ class Page extends WixComponent {
           data-hook="page-scrollable-content"
           >
           <div className={s.contentPlaceholder} style={{height: `${headerHeight}px`}}/>
-          {backgroundImageUrl &&
-          <div
-            className={s.imageBackground}
-            style={{
-              height: `${headerHeight + (PageTail ? -tailHeight : 39)}px`,
-              backgroundImage: `url(${backgroundImageUrl})`
-            }}
-            data-hook="page-background-image"
-            >
-            <div className={s.imageBackgroundOverlay}/>
-          </div>
+          {
+            backgroundImageUrl &&
+              <div
+                className={s.imageBackground}
+                style={{
+                  height: `${headerHeight + (PageTail ? -tailHeight : 39)}px`,
+                  backgroundImage: `url(${backgroundImageUrl})`
+                }}
+                data-hook="page-background-image"
+                >
+                <div className={s.imageBackgroundOverlay}/>
+              </div>
           }
           <div className={s.content}>
             {this._safeGetChildren(PageContent)}

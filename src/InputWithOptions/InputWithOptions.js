@@ -134,9 +134,6 @@ class InputWithOptions extends WixComponent {
   hideOptions() {
     if (this.state.showOptions) {
       this.setState({showOptions: false});
-      if (this._focused) {
-        this.input.blur();
-      }
     }
   }
 

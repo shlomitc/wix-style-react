@@ -8,7 +8,7 @@ import textDriverFactory from '../Text/Text.driver';
 const textTestkitFactory = testkitFactoryCreator(textDriverFactory);
 
 const loaderDriverFactory = ({element, wrapper}) => {
-  const textDriver = textTestkitFactory({wrapper: element, dataHook: 'loader-text'});
+  const textDriver = element && textTestkitFactory({wrapper: element, dataHook: 'loader-text'});
 
   return {
     component: () => element,

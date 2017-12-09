@@ -298,7 +298,7 @@ $material-gap: 8px;
   .root,
   .input-wrapper,
   .prefixes,
-  .suffixes { flex-direction: row-reverse; }
+  .suffixes { direction: rtl; }
   .input {
     direction: rtl;
 
@@ -315,9 +315,9 @@ $material-gap: 8px;
 
 // RTL layout based on a property passed directly to the component.
 .rtl.root {
-  flex-direction: row-reverse;
+  direction: rtl;
   .prefixes,
-  .suffixes { flex-direction: row-reverse; }
+  .suffixes { direction: rtl; }
   .input { direction: rtl; }
 }
 

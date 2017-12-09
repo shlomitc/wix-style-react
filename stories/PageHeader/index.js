@@ -8,7 +8,7 @@ const action = <Button>Action</Button>;
 
 story({
   category: '10. Page',
-  storyName: '10.2 Header with Options',
+  storyName: '10.3 Header with Options',
   componentSrcFolder: 'PageHeader',
   componentProps: {
     onBackClicked: () => {},
