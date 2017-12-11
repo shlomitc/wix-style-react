@@ -57,5 +57,6 @@ class Dropdown extends InputWithOptions {
 
 Dropdown.propTypes = InputWithOptions.propTypes;
 Dropdown.defaultProps = InputWithOptions.defaultProps;
+Dropdown.displayName = 'Dropdown';
 
 export default Dropdown;

@@ -266,7 +266,7 @@ Input.propTypes = {
   /** Default value for those who wants to use this component un-controlled */
   defaultValue: PropTypes.string,
 
-  /** when set to true this component is disabl */
+  /** when set to true this component is disabled */
   disabled: PropTypes.bool,
 
   /** Is input value erroneous */

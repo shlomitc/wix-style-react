@@ -60,6 +60,9 @@ export const textAreaTestkitFactory = protractorTestkitFactoryCreator(textAreaDr
 import textFieldDriverFactory from '../src/TextField/TextField.protractor.driver';
 export const textFieldTestkitFactory = protractorTestkitFactoryCreator(textFieldDriverFactory);
 
+import dropdownCompositeDriverFactory from '../src/DropdownComposite/DropdownComposite.protractor.driver';
+export const dropdownCompositeTestkitFactory = protractorTestkitFactoryCreator(dropdownCompositeDriverFactory);
+
 import autoCompleteCompositeDriverFactory from '../src/AutoCompleteComposite/AutoCompleteComposite.protractor.driver';
 export const autoCompleteCompositeTestkitFactory = protractorTestkitFactoryCreator(autoCompleteCompositeDriverFactory);
 

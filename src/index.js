@@ -42,6 +42,7 @@ export {default as Text} from './Text';
 export {default as TextArea} from './TextArea';
 export {default as Range} from './Range';
 export {default as TextField} from './TextField';
+export {default as DropdownComposite} from './DropdownComposite';
 export {default as EndorseContentLayout} from './EndorseContentLayout';
 export {default as Notification} from './Notification';
 export {default as Breadcrumbs} from './Breadcrumbs';

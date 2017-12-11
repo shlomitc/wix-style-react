@@ -1,7 +1,7 @@
 {
   "name": "wix-style-react",
   "description": "wix-style-react",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "main": "./dist/src/index.js",
   "files": [
     "dist",

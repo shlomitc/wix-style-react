@@ -70,6 +70,7 @@ import '../stories/TextField'; // 3.1 Text Field
 import '../stories/TextArea'; // 3.2 Text Area
 import '../stories/FieldWithSelectionComposite'; // 3.3 Field With Selection
 import '../stories/RichTextAreaComposite'; // 3.4 Rich Text Area Composite
+import '../stories/DropdownComposite'; // 3.5 Dropdown Composite
 import '../stories/Range'; // 3.7 Range
 import '../stories/MultiSelect'; // 3.8 Tags
 import '../stories/Search'; // 3.9 Search
