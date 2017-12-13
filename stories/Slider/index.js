@@ -1,7 +1,8 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import AutoDocs from '../utils/Components/AutoDocs';
-import CodeExample from '../utils/Components/CodeExample';
+import AutoDocs from 'wix-storybook-utils/AutoDocs';
+import CodeExample from 'wix-storybook-utils/CodeExample';
+
 import SliderSource from '!raw-loader!wix-style-react/Slider/Slider';
 
 import ExampleStandard from './ExampleStandard';

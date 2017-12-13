@@ -1,12 +1,14 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import Markdown from '../utils/Components/Markdown';
-import AutoDocs from '../utils/Components/AutoDocs';
-import CodeExample from '../utils/Components/CodeExample';
+import Markdown from 'wix-storybook-utils/Markdown';
+import AutoDocs from 'wix-storybook-utils/AutoDocs';
+import TabbedView from 'wix-storybook-utils/TabbedView';
+import CodeExample from 'wix-storybook-utils/CodeExample';
+
+import InputAreaSource from '!raw-loader!wix-style-react/InputArea/InputArea';
+
 import Readme from '../../src/InputArea/README.md';
 import ReadmeTestkit from '../../src/InputArea/README.TESTKIT.md';
-import TabbedView from '../utils/Components/TabbedView';
-import InputAreaSource from '!raw-loader!wix-style-react/InputArea/InputArea';
 
 import ExampleStandard from './ExampleStandard';
 import ExampleStandardRaw from '!raw-loader!./ExampleStandard';

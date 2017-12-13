@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Languages} from 'wix-style-react/Icons';
-import story from '../utils/Components/Story';
+import story from 'story';
 
 const labelExamples = [
   'Hello World!',

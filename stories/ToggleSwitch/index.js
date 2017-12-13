@@ -1,4 +1,4 @@
-import story from '../utils/Components/Story';
+import story from 'story';
 
 story({
   category: 'Core',

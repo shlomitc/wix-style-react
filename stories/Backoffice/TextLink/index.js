@@ -1,7 +1,7 @@
 import React from 'react';
 
-import story from '../../utils/Components/Story';
-import CodeExample from '../../utils/Components/CodeExample';
+import story from 'story';
+import CodeExample from 'wix-storybook-utils/CodeExample';
 
 import ExampleStandard from './ExampleStandard';
 import ExampleStandardRaw from '!raw-loader!./ExampleStandard';

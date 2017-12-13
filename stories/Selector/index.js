@@ -1,8 +1,9 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import Markdown from '../utils/Components/Markdown';
-import CodeExample from '../utils/Components/CodeExample';
-import TabbedView from '../utils/Components/TabbedView';
+import Markdown from 'wix-storybook-utils/Markdown';
+import TabbedView from 'wix-storybook-utils/TabbedView';
+import CodeExample from 'wix-storybook-utils/CodeExample';
+
 import ReadmeTestKit from '../../src/Selector/README.TESTKIT.md';
 import Readme from '../../src/Selector/README.md';
 
@@ -10,7 +11,7 @@ import ExampleControlled from './ExampleControlled';
 import ExampleControlledRaw from '!raw-loader!./ExampleControlled';
 
 storiesOf('Core', module)
-  .add('Selector', () => (
+  .add('Selector', () =>
     <TabbedView tabs={['API', 'TestKits']}>
       <div>
         <Markdown source={Readme}/>
@@ -21,8 +22,7 @@ storiesOf('Core', module)
           <ExampleControlled/>
         </CodeExample>
       </div>
-      <div>
-        <Markdown source={ReadmeTestKit}/>
-      </div>
+
+      <Markdown source={ReadmeTestKit}/>
     </TabbedView>
-  ));
+  );

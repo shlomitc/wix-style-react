@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import CodeExample from '../utils/Components/CodeExample';
+import CodeExample from 'wix-storybook-utils/CodeExample';
 
 import ExampleStandard from './ExampleStandard';
 import ExampleStandardRaw from '!raw-loader!./ExampleStandard';

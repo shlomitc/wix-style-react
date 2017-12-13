@@ -1,5 +1,5 @@
+import story from 'story';
 import React from 'react';
-import story from '../utils/Components/Story';
 
 import Text from 'wix-style-react/Text';
 import Badge from 'wix-style-react/Badge';

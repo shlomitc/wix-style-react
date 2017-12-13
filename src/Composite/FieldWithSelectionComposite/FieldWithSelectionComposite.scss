@@ -33,7 +33,8 @@
     padding: 5px 12px;
   }
 
-  &.inputwithoptions {
+  &.inputwithoptions,
+  &.dropdown{
     background:$D80;
 
     >div:last-child {

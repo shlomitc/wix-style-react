@@ -1,8 +1,9 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import TabbedView from '../utils/Components/TabbedView';
-import Markdown from '../utils/Components/Markdown';
-import CodeExample from '../utils/Components/CodeExample';
+import TabbedView from 'wix-storybook-utils/TabbedView';
+import Markdown from 'wix-storybook-utils/Markdown';
+import CodeExample from 'wix-storybook-utils/CodeExample';
+
 import Readme from '../../src/MessageBox/README.md';
 import ReadmeTestKit from '../../src/MessageBox/README.TESTKIT.md';
 
@@ -19,6 +20,7 @@ storiesOf('9. Modals', module)
           <ExampleStandard/>
         </CodeExample>
       </div>
+
       <Markdown source={ReadmeTestKit}/>
     </TabbedView>
   ));

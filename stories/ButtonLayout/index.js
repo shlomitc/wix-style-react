@@ -1,5 +1,5 @@
 import React from 'react';
-import story from '../utils/Components/Story';
+import story from 'story';
 
 import component from 'wix-style-react/ButtonLayout';
 import source from '!raw-loader!wix-style-react/ButtonLayout/ButtonLayout';

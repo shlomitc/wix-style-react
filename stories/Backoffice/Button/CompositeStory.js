@@ -3,7 +3,7 @@ import isPlainObject from 'lodash/isPlainObject';
 
 import * as Icons from 'wix-style-react/Icons';
 
-import story from '../../utils/Components/Story';
+import story from 'story';
 
 const icons = Object.values(Icons).map(icon => React.createElement(icon));
 

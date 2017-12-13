@@ -303,15 +303,50 @@ describe('Tooltip', () => {
   });
 
   describe('testkit', () => {
-    it('should exist', () => {
+
+    const createTooltipTestkitDriver = props => {
       const div = document.createElement('div');
       const dataHook = 'myDataHook';
-      const wrapper = div.appendChild(ReactTestUtils.renderIntoDocument(<div><Tooltip dataHook={dataHook} {..._props}>{children}</Tooltip></div>));
+      const tooltipProps = {..._props, ...props};
+      const wrapper = div.appendChild(ReactTestUtils.renderIntoDocument(<div><Tooltip dataHook={dataHook} {...tooltipProps}>{children}</Tooltip></div>));
       const driver = tooltipTestkitFactory({wrapper, dataHook});
+      return driver;
+    };
+
+    it('should exist', () => {
+      const driver = createTooltipTestkitDriver();
       driver.mouseEnter();
       expect(driver.isShown()).toBeFalsy();
       return resolveIn(30).then(() => {
         expect(driver.isShown()).toBeTruthy();
+      });
+    });
+
+    it('should exist with default props when appendToParent', () => {
+      const driver = createTooltipTestkitDriver({appendToParent: true});
+      driver.mouseEnter();
+      expect(driver.isShown()).toBeFalsy();
+      return resolveIn(30).then(() => {
+        expect(driver.isShown()).toBeTruthy();
+        expect(driver.getContent()).toBe('I\'m the content');
+        expect(driver.hasLightTheme()).toBeTruthy();
+        expect(driver.getPlacement()).toBe('top');
+      });
+    });
+
+    it('should have dark theme when appendToParent', () => {
+      const driver = createTooltipTestkitDriver({appendToParent: true, theme: 'dark'});
+      driver.mouseEnter();
+      return resolveIn(30).then(() => {
+        expect(driver.hasDarkTheme()).toBeTruthy();
+      });
+    });
+
+    it('should have error theme when appendToParent', () => {
+      const driver = createTooltipTestkitDriver({appendToParent: true, theme: 'error'});
+      driver.mouseEnter();
+      return resolveIn(30).then(() => {
+        expect(driver.hasErrorTheme()).toBeTruthy();
       });
     });
   });

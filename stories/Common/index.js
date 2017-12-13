@@ -1,7 +1,7 @@
 import React from 'react';
+import CodeExample from 'wix-storybook-utils/CodeExample';
 
-import story from '../utils/Components/Story';
-import CodeExample from '../utils/Components/CodeExample';
+import story from 'story';
 
 import ExampleHeadersTypography from './ExampleHeadersTypography';
 import ExampleHeaderTypographyRaw from '!raw-loader!./ExampleHeadersTypography';

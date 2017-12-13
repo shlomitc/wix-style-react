@@ -1,5 +1,5 @@
 import React from 'react';
-import story from '../utils/Components/Story';
+import story from 'story';
 import Button from '../../src/Backoffice/Button';
 import Breadcrumbs from '../Page/Breadcrumbs';
 import './PageHeader.scss';

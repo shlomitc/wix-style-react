@@ -1,7 +1,7 @@
 import React from 'react';
-import story from '../utils/Components/Story';
+import story from 'story';
 
-import CodeExample from '../utils/Components/CodeExample';
+import CodeExample from 'wix-storybook-utils/CodeExample';
 
 import LanguagePicker from 'wix-style-react/LanguagePicker';
 import Example from './Example';

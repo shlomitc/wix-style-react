@@ -1,12 +1,12 @@
 import React from 'react';
-import CodeExample from '../../utils/Components/CodeExample';
+import CodeExample from 'wix-storybook-utils/CodeExample';
 
 import ExampleControlled from './ExampleControlled';
 import ExampleControlledRaw from '!raw-loader!./ExampleControlled';
 import IconsExample from './ExampleWithIcons';
 import IconsExampleRaw from '!raw-loader!./ExampleWithIcons';
 
-import story from '../../utils/Components/Story';
+import story from 'story';
 import * as Icons from 'wix-style-react/Icons';
 
 const icons = Object.values(Icons).map(icon => React.createElement(icon));

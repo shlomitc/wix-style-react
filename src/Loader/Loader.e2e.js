@@ -1,5 +1,5 @@
 import {getStoryUrl, loaderTestkitFactory, waitForVisibilityOf} from '../../testkit/protractor';
-import autoExampleDriver from '../../stories/utils/Components/AutoExample/protractor.driver';
+import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
 
 describe('Loader', () => {
   const storyUrl = getStoryUrl('Core', 'Loader');

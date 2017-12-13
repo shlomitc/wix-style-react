@@ -10,7 +10,8 @@ module.exports = (config, env) => {
     context: path.resolve(__dirname, '../src'),
     resolve: {
       alias: {
-        'wix-style-react': path.resolve(__dirname, '../src')
+        'wix-style-react': path.resolve(__dirname, '../src'),
+        'story': path.resolve(__dirname, '../stories/create-story')
       }
     }
   });

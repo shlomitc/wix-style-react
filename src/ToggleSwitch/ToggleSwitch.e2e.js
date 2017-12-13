@@ -1,6 +1,6 @@
 import eyes from 'eyes.it';
 import {toggleSwitchTestkitFactory, getStoryUrl, waitForVisibilityOf} from '../../testkit/protractor';
-import autoExampleDriver from '../../stories/utils/Components/AutoExample/protractor.driver';
+import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
 
 describe('toggle switch page', () => {
   const storyUrl = getStoryUrl('Core', 'ToggleSwitch');

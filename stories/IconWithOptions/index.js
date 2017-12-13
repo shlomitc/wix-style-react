@@ -1,8 +1,9 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import CodeExample from '../utils/Components/CodeExample';
-import TabbedView from '../utils/Components/TabbedView';
-import Markdown from '../utils/Components/Markdown';
+import TabbedView from 'wix-storybook-utils/TabbedView';
+import Markdown from 'wix-storybook-utils/Markdown';
+import CodeExample from 'wix-storybook-utils/CodeExample';
+
 import Readme from '../../src/IconWithOptions/README.md';
 import ReadmeTestkit from '../../src/IconWithOptions/README.TESTKIT.md';
 
@@ -19,8 +20,7 @@ storiesOf('4. Selection', module)
           <Example/>
         </CodeExample>
       </div>
-      <div>
-        <Markdown source={ReadmeTestkit}/>
-      </div>
+
+      <Markdown source={ReadmeTestkit}/>
     </TabbedView>
   ));

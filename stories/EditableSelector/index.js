@@ -1,11 +1,13 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import AutoDocs from '../utils/Components/AutoDocs';
-import TabbedView from '../utils/Components/TabbedView';
-import CodeExample from '../utils/Components/CodeExample';
+
+import AutoDocs from 'wix-storybook-utils/AutoDocs';
+import TabbedView from 'wix-storybook-utils/TabbedView';
+import Markdown from 'wix-storybook-utils/Markdown';
+import CodeExample from 'wix-storybook-utils/CodeExample';
+
 import EditableSelectorSource from '!raw-loader!../../src/EditableSelector/EditableSelector';
 import TestKitReadme from '../../src/EditableSelector/README.TESTKIT.md';
-import Markdown from '../utils/Components/Markdown';
 
 import CardWithEditableSelectorExample from './CardWithEditableSelector';
 import CardWithEditableSelectorExampleRaw from '!raw-loader!./CardWithEditableSelector';
@@ -29,8 +31,6 @@ storiesOf('4. Selection', module)
 
       </div>
 
-      <div>
-        <Markdown source={TestKitReadme}/>
-      </div>
+      <Markdown source={TestKitReadme}/>
     </TabbedView>
   );

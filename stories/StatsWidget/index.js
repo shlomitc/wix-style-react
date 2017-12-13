@@ -1,6 +1,10 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import CodeExample from '../utils/Components/CodeExample';
+
+import AutoDocs from 'wix-storybook-utils/AutoDocs';
+import TabbedView from 'wix-storybook-utils/TabbedView';
+import Markdown from 'wix-storybook-utils/Markdown';
+import CodeExample from 'wix-storybook-utils/CodeExample';
 
 import StatsWidgetSource from '!raw-loader!../../src/StatsWidget/StatsWidget';
 
@@ -12,10 +16,7 @@ import ExampleStatsWidgetWithPercentsRaw from '!raw-loader!./ExampleStatsWidgetW
 
 import ExampleStatsWidgetWithFilters from './ExampleStatsWidgetWithFilters';
 import ExampleStatsWidgetWithFiltersRaw from '!raw-loader!./ExampleStatsWidgetWithFilters';
-import AutoDocs from '../utils/Components/AutoDocs';
 import ReadmeTestkit from '../../src/StatsWidget/README.TESTKIT.md';
-import TabbedView from '../utils/Components/TabbedView';
-import Markdown from '../utils/Components/Markdown';
 
 
 storiesOf('Core', module)
@@ -37,8 +38,7 @@ storiesOf('Core', module)
           <ExampleStatsWidgetWithFilters/>
         </CodeExample>
       </div>
-      <div>
-        <Markdown source={ReadmeTestkit}/>
-      </div>
+
+      <Markdown source={ReadmeTestkit}/>
     </TabbedView>
   ));

@@ -1,6 +1,6 @@
 import eyes from 'eyes.it';
 import {checkboxTestkitFactory, getStoryUrl, waitForVisibilityOf} from '../../testkit/protractor';
-import autoExampleDriver from '../../stories/utils/Components/AutoExample/protractor.driver';
+import autoExampleDriver from 'wix-storybook-utils/AutoExampleDriver';
 
 describe('Checkbox', () => {
   const storyUrl = getStoryUrl('4. Selection', '4.2 Checkbox');

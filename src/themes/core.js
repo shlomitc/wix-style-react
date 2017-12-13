@@ -28,7 +28,7 @@ export const button = {
 };
 
 export const input = {
-  paaing: '0 0',
+  padding: '0 0',
   display: 'block',
   backgroundColor: 'transparent',
 

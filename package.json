@@ -66,6 +66,8 @@
     "eyes.it": "^2.0.0",
     "gh-pages-auto-release": "^1.1.2",
     "github-markdown-css": "^2.4.1",
+    "haste-cli": "~0.1.16",
+    "haste-preset-yoshi": "latest",
     "highlight.js": "^9.8.0",
     "identity-obj-proxy": "^3.0.0",
     "import-path": "^0.0.10",
@@ -81,8 +83,7 @@
     "sinon": "^1.17.6",
     "svg2react-icon": "^1.0.0",
     "wait-for-cond": "^1.0.3",
-    "haste-preset-yoshi": "latest",
-    "haste-cli": "~0.1.16"
+    "wix-storybook-utils": "latest"
   },
   "peerDependencies": {
     "react": "^15.0.0",

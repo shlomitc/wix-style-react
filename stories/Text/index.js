@@ -1,7 +1,7 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
-import CodeExample from '../utils/Components/CodeExample';
-import AutoDocs from '../utils/Components/AutoDocs';
+import AutoDocs from 'wix-storybook-utils/AutoDocs';
+import CodeExample from 'wix-storybook-utils/CodeExample';
 
 import TextSource from '!raw-loader!wix-style-react/Text/Text';
 
