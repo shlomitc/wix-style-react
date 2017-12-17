@@ -11,6 +11,7 @@ const textLinkLayoutDriverFactory = ({element, wrapper, component}) => {
     isDarkBackground: () => element.style._values.color === 'rgb(255, 255, 255)',
     hover: () => ReactTestUtils.Simulate.mouseEnter(element),
     isUnderline: () => element.style._values['text-decoration'] === 'underline',
+    getDisplay: () => element.style._values.display,
     isLightBackground: () => element.style._values.color === 'rgb(56, 153, 236)',
     getSize: () => element.classList.contains('t1_3') ? 'medium' : element.classList.contains('t3_3') ? 'small' : 'unknown',
     setProps: props => {

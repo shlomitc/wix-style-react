@@ -4,8 +4,8 @@ import {storiesOf} from '@storybook/react';
 import AutoDocs from 'wix-storybook-utils/AutoDocs';
 import Markdown from 'wix-storybook-utils/Markdown';
 import TabbedView from 'wix-storybook-utils/TabbedView';
-import AutoExampleSource from '!raw-loader!wix-storybook-utils/AutoExample';
-import StorySource from '!raw-loader!wix-storybook-utils/Story';
+import AutoExampleSource from '!raw-loader!wix-storybook-utils/src/AutoExample';
+import StorySource from '!raw-loader!wix-storybook-utils/src/Story';
 
 import Readme from '../../README.md';
 import TestsReadme from '../../docs/TESTS.md';

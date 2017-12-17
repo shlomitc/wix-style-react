@@ -136,10 +136,10 @@ PageHeader.propTypes = {
   title: PropTypes.string.isRequired,
   /** Subtitle to display */
   subtitle: PropTypes.string,
-  /** Callback when back button clicked */
-  onBackClicked: PropTypes.func,
   /** Should display back button */
   showBackButton: PropTypes.bool,
+  /** Callback when back button clicked */
+  onBackClicked: PropTypes.func,
   /** Components that includes actions */
   actionsBar: PropTypes.node
 };

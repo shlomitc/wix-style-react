@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class Content extends React.Component {
+export default class SomeContentComponent extends React.Component {
   render() {
     return (
       <div style={{backgroundColor: 'white'}}>

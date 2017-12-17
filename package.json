@@ -1,7 +1,7 @@
 {
   "name": "wix-style-react",
   "description": "wix-style-react",
-  "version": "1.2.5",
+  "version": "1.2.7",
   "main": "./dist/src/index.js",
   "files": [
     "dist",
@@ -118,7 +118,8 @@
     "react-remarkable": "^1.1.1",
     "react-transition-group": "^2.2.1",
     "slate": "^0.20.3",
-    "wix-animations": "^1.0.95",
+    "wix-ui-backoffice": "latest",
+    "wix-animations": "latest",
     "wix-ui-test-utils": "latest"
   },
   "jest": {

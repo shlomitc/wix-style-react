@@ -22,3 +22,5 @@
 | scrollable | boolean | true | - | Specifies if modal portal supports scroll |
 | scrollableContent | boolean | false | - | Specifies if modal content should become scrollable when modal size will fit the window |
 | appElement | string | - | false | selector spcifying where to apply the aria-hidden attribute  |
+| overlayPosition | static, relative, absolute, fixed, sticky | fixed | - | css position of the modal overlay |
+| parentSelector | func | - | - | A function that returns a DOM element on which the modal should be appended to |

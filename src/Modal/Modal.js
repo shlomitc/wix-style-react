@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import ReactModal from 'react-modal';
 import classnames from 'classnames';
 import styles from './Modal.scss';
-import {colors, positions} from './ModalConstants';
+import {colors, flexPositions, positions} from './ModalConstants';
 import WixComponent from '../BaseComponents/WixComponent';
 
 class Modal extends WixComponent {
@@ -16,13 +16,15 @@ class Modal extends WixComponent {
     shouldCloseOnOverlayClick: PropTypes.bool,
     onRequestClose: PropTypes.func,
     onAfterOpen: PropTypes.func,
-    horizontalPosition: PropTypes.oneOf(Object.keys(positions)),
-    verticalPosition: PropTypes.oneOf(Object.keys(positions)),
+    horizontalPosition: PropTypes.oneOf(Object.keys(flexPositions)),
+    verticalPosition: PropTypes.oneOf(Object.keys(flexPositions)),
     closeTimeoutMS: PropTypes.number,
     scrollable: PropTypes.bool,
     scrollableContent: PropTypes.bool,
     maxHeight: PropTypes.string,
-    height: PropTypes.string
+    height: PropTypes.string,
+    overlayPosition: PropTypes.oneOf(Object.keys(positions)),
+    parentSelector: PropTypes.func
   }
 
   static defaultProps = {
@@ -37,7 +39,8 @@ class Modal extends WixComponent {
     scrollable: true,
     scrollableContent: false,
     height: 'auto',
-    maxHeight: 'auto'
+    maxHeight: 'auto',
+    overlayPosition: 'fixed'
   }
 
   render() {
@@ -58,17 +61,19 @@ class Modal extends WixComponent {
       contentLabel,
       closeTimeoutMS,
       children,
-      appElement
+      appElement,
+      overlayPosition,
+      parentSelector
     } = this.props;
 
-    const justifyContent = positions[horizontalPosition];
-    const alignItems = positions[verticalPosition];
+    const justifyContent = flexPositions[horizontalPosition];
+    const alignItems = flexPositions[verticalPosition];
     const customMaxHeight = scrollableContent && maxHeight === 'auto' ? '100vh' : maxHeight;
 
     const modalStyles = {
       overlay: {
         // Overriding defaults
-        position: 'fixed',
+        position: overlayPosition,
         top: 0,
         left: 0,
         right: 0,
@@ -119,6 +124,7 @@ class Modal extends WixComponent {
         className={modalClasses}
         contentLabel={contentLabel}
         closeTimeoutMS={closeTimeoutMS}
+        parentSelector={parentSelector}
         >
         {children}
       </ReactModal>

@@ -64,6 +64,16 @@ describe('TextLinkLayout', () => {
     driver.hover();
     expect(driver.isUnderline()).toBeTruthy();
   });
+
+  it('should be with display block by defualt', () => {
+    const driver = createDriver(<TextLinkLayout/>);
+    expect(driver.getDisplay()).toBe('block');
+  });
+
+  it('should be with a custom display', () => {
+    const driver = createDriver(<TextLinkLayout display="inline-block"/>);
+    expect(driver.getDisplay()).toBe('inline-block');
+  });
 });
 
 describe('testkit', () => {

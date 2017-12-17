@@ -14,27 +14,6 @@ describe('toggle switch page', () => {
     autoExampleDriver.reset();
   });
 
-  eyes.it('should render x-small toggle switch', () => {
-    autoExampleDriver.setProps({size: 'x-small'});
-
-    waitForVisibilityOf(toggleSwitchDriver.element(), 'Cant find ToggleSwitch')
-      .then(() => expect(toggleSwitchDriver.isXSmall()).toBe(true));
-  });
-
-  eyes.it('should render small toggle switch', () => {
-    autoExampleDriver.setProps({size: 'small'});
-
-    waitForVisibilityOf(toggleSwitchDriver.element(), 'Cant find ToggleSwitch')
-      .then(() => expect(toggleSwitchDriver.isSmall()).toBe(true));
-  });
-
-  eyes.it('should render large switch', () => {
-    autoExampleDriver.setProps({size: 'large'});
-
-    waitForVisibilityOf(toggleSwitchDriver.element(), 'Cant find ToggleSwitch')
-      .then(() => expect(toggleSwitchDriver.isLarge()).toBe(true));
-  });
-
   eyes.it('should change state on click', () => {
     waitForVisibilityOf(toggleSwitchDriver.element(), 'Cant find ToggleSwitch')
       .then(() => {
