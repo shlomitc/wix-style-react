@@ -29,7 +29,7 @@ class Selector extends WixComponent {
     title: PropTypes.string.isRequired,
     isSelected: PropTypes.bool,
     subtitle: PropTypes.string,
-    extraText: PropTypes.string,
+    extraNode: PropTypes.node,
     onToggle: PropTypes.func,
     toggleType: PropTypes.oneOf(['checkbox', 'radio'])
   };
@@ -52,7 +52,7 @@ class Selector extends WixComponent {
       image,
       title,
       subtitle,
-      extraText,
+      extraNode,
       isSelected,
       id,
       toggleType
@@ -85,9 +85,9 @@ class Selector extends WixComponent {
             {subtitle && <div><Text appearance="T3" dataHook="selector-subtitle">{subtitle}</Text></div>}
           </div>
         </div>
-        {extraText &&
-          <div className={styles.extra}>
-            <Text appearance="T1.1" dataHook="selector-extra-text">{extraText}</Text>
+        {extraNode &&
+          <div className={styles.extra} data-hook="selector-extra-node">
+            {extraNode}
           </div>
         }
       </li>

@@ -17,7 +17,7 @@ import Text from '../Text/Text';
 export default class ModalSelectorLayout extends WixComponent {
   static propTypes = {
     /** Title of the modal */
-    title: string.isRequired,
+    title: string,
     /** Fixed text displayed above the list */
     subtitle: string,
     /** OK button callback, called with the currently selected item  */
@@ -36,6 +36,7 @@ export default class ModalSelectorLayout extends WixComponent {
      *    title: string,
      *    subtitle?: string,
      *    extraText?: string,
+     *    extraNode?: string,
      *    image?: node
      *  }>,
      *  totalCount: number
@@ -47,9 +48,9 @@ export default class ModalSelectorLayout extends WixComponent {
      * */
     dataSource: func.isRequired,
     /** Cancel button's text */
-    cancelButtonText: string.isRequired,
+    cancelButtonText: string,
     /** OK button's text */
-    okButtonText: string.isRequired,
+    okButtonText: string,
     /** Image icon size */
     imageSize: oneOf([
       'tiny',
@@ -68,7 +69,7 @@ export default class ModalSelectorLayout extends WixComponent {
       }
     },
     /** Placeholder text of the search input */
-    searchPlaceholder: string.isRequired,
+    searchPlaceholder: string,
     /**
      * Component/element that will be rendered when there is nothing to display,
      * i.e. empty `{items:[], totalCount: 0}` was returned on the first call to `dataSource`
@@ -78,11 +79,11 @@ export default class ModalSelectorLayout extends WixComponent {
      * Function that will get the current `searchQuery` and should return the component/element
      * that will be rendered when there no items that suffice the entered search query
      *  */
-    noResultsFoundStateFactory: func.isRequired,
+    noResultsFoundStateFactory: func,
     /** Number of items loaded each time the user scrolls down */
-    itemsPerPage: number.isRequired,
+    itemsPerPage: number,
     /** Whether to display the search input or not */
-    withSearch: bool.isRequired,
+    withSearch: bool,
     height: string
   };
 
@@ -96,6 +97,7 @@ export default class ModalSelectorLayout extends WixComponent {
     itemsPerPage: 50,
     withSearch: true,
     height: '100%',
+    emptyState: <Text appearance="T1">{`You don't have any items`}</Text>,
     noResultsFoundStateFactory: searchValue =>
       <Text appearance="T1">No items matched your search {`"${searchValue}"`}</Text>
   };
@@ -106,7 +108,8 @@ export default class ModalSelectorLayout extends WixComponent {
     items: [],
     searchValue: '',
     selectedItem: undefined,
-    shouldShowNoResultsFoundState: false
+    shouldShowNoResultsFoundState: false,
+    isEmpty: false
   };
 
   render() {
@@ -128,6 +131,7 @@ export default class ModalSelectorLayout extends WixComponent {
     const {
       items,
       isLoaded,
+      isEmpty,
       isSearching,
       searchValue,
       selectedItem,
@@ -137,7 +141,7 @@ export default class ModalSelectorLayout extends WixComponent {
     return (
       <div className={css.modalContent} style={{height}}>
         <HeaderLayout title={title} onCancel={onClose}/>
-        {isLoaded && <div className={css.subheaderWrapper}>
+        {isLoaded && !isEmpty && <div className={css.subheaderWrapper}>
           {subtitle &&
           <div className={css.subtitleWrapper}>
             <Text appearance="T1" dataHook="modal-selector-subtitle">{subtitle}</Text>
@@ -164,7 +168,7 @@ export default class ModalSelectorLayout extends WixComponent {
                 />
             </div>
           }
-          {items.length === 0 && isLoaded && !searchValue &&
+          {isEmpty &&
           <div data-hook="modal-selector-empty-state" className={css.emptyStateWrapper}>
             {emptyState}
           </div>
@@ -225,7 +229,7 @@ export default class ModalSelectorLayout extends WixComponent {
               image={item.image}
               title={item.title}
               subtitle={item.subtitle}
-              extraText={item.extraText}
+              extraNode={item.extraNode ? item.extraNode : <Text appearance="T1.1">{item.extraText}</Text>}
               isSelected={selectedItem && (selectedItem.id === item.id)}
               onToggle={() => this.setState({selectedItem: item})}
               />
@@ -249,12 +253,18 @@ export default class ModalSelectorLayout extends WixComponent {
     const {items, searchValue} = this.state;
     dataSource(searchValue, items.length, itemsPerPage).then(({items: itemsFromNextPage, totalCount}) => {
       if (this.state.searchValue === searchValue) { // react only to the resolve of the relevant search
+
+        const newItems = [...items, ...itemsFromNextPage];
+
+        const shouldShowNoResultsFoundState = (newItems.length === 0) && searchValue;
+        const isEmpty = (newItems.length === 0) && !searchValue;
         this.setState({
-          items: [...items, ...itemsFromNextPage],
+          items: newItems,
           isLoaded: true,
+          isEmpty,
           isSearching: false,
           totalCount,
-          shouldShowNoResultsFoundState: (items.length + itemsFromNextPage.length) === 0
+          shouldShowNoResultsFoundState
         });
       }
     });

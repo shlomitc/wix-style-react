@@ -27,8 +27,7 @@ describe('ModalSelectorLayout', () => {
   const emptyDataSource = paginatedDataSourceFactory([]);
   const createDriver = createDriverFactory(modalSelectorLayoutDriverFactory);
   const requiredProps = {
-    dataSource: emptyDataSource,
-    emptyState: ''
+    dataSource: emptyDataSource
   };
   const createDriverWithProps = props => createDriver(<ModalSelectorLayout {...requiredProps} {...props}/>);
 
@@ -55,6 +54,8 @@ describe('ModalSelectorLayout', () => {
       await flushPromises();
 
       expect(driver.mediumLoaderDriver().exists()).toBe(false);
+      expect(driver.showsNoResultsFoundState()).toBe(false);
+      expect(driver.searchDriver().exists()).toBe(false);
       expect(driver.showsEmptyState()).toBe(true);
       expect(driver.getEmptyState()).toBeInstanceOf(HTMLImageElement);
       expect(driver.getEmptyState().src).toBe('empty_state.png');
@@ -65,7 +66,7 @@ describe('ModalSelectorLayout', () => {
 
       const dataSource = paginatedDataSourceFactory([
         {id: 1, title: 'rick', subtitle: 'sanchez', extraText: 'get', image: <img src="rick.png"/>},
-        {id: 2, title: 'morty', subtitle: 'smith', extraText: 'shwifty', image: <img src="morty.png"/>}
+        {id: 2, title: 'morty', subtitle: 'smith', extraNode: <img src="shwifty.png"/>, image: <img src="morty.png"/>}
       ]);
       const driver = createDriverWithProps({isOpen: true, dataSource});
 
@@ -76,12 +77,13 @@ describe('ModalSelectorLayout', () => {
       expect(driver.listExists()).toBe(true);
       expect(driver.getSelectorDriverAt(0).titleTextDriver().getText()).toBe('rick');
       expect(driver.getSelectorDriverAt(0).subtitleTextDriver().getText()).toBe('sanchez');
-      expect(driver.getSelectorDriverAt(0).extraTextDriver().getText()).toBe('get');
+      expect(driver.getSelectorDriverAt(0).getExtraNode().textContent).toBe('get');
       expect(driver.getSelectorDriverAt(0).getImage()).toBeInstanceOf(HTMLImageElement);
       expect(driver.getSelectorDriverAt(0).getImage().src).toBe('rick.png');
       expect(driver.getSelectorDriverAt(1).titleTextDriver().getText()).toBe('morty');
       expect(driver.getSelectorDriverAt(1).subtitleTextDriver().getText()).toBe('smith');
-      expect(driver.getSelectorDriverAt(1).extraTextDriver().getText()).toBe('shwifty');
+      expect(driver.getSelectorDriverAt(1).getExtraNode()).toBeInstanceOf(HTMLImageElement);
+      expect(driver.getSelectorDriverAt(1).getExtraNode().src).toBe('shwifty.png');
       expect(driver.getSelectorDriverAt(1).getImage()).toBeInstanceOf(HTMLImageElement);
       expect(driver.getSelectorDriverAt(1).getImage().src).toBe('morty.png');
     });
@@ -390,6 +392,17 @@ describe('ModalSelectorLayout', () => {
   });
 
   describe('defaults', () => {
+    it('should render empty state', async () => {
+      const driver = createDriverWithProps({
+        isOpen: true,
+        dataSource: emptyDataSource
+      });
+      await flushPromises();
+
+      expect(driver.showsEmptyState()).toBe(true);
+      expect(driver.getEmptyState().textContent).toBe(`You don't have any items`);
+    });
+
     it('should render noResultsFound state', async () => {
       const searchValue = 'wubba lubba dub dub';
       const driver = createDriverWithProps({

@@ -6,8 +6,6 @@ import selectorDriverFactory from '../Selector/Selector.driver';
 import searchDriverFactory from '../Search/Search.driver';
 import textDriverFactory from '../Text/Text.driver';
 
-
-
 const textTestkitFactory = testkitFactoryCreator(textDriverFactory);
 const loaderTestkitFactory = testkitFactoryCreator(loaderDriverFactory);
 const buttonTestkitFactory = testkitFactoryCreator(buttonDriverFactory);

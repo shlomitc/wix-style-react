@@ -27,8 +27,7 @@ story({
           items: filteredItems.slice(offset, offset + limit),
           totalCount: filteredItems.length
         });
-      }, 2000)),
-    emptyState: <div style={{backgroundColor: 'blue', width: '100%', height: '100%'}}>nothing</div>
+      }, 2000))
   }),
   exampleProps: {
     onOk: ({id, title, subtitle}) => JSON.stringify({id, title, subtitle})

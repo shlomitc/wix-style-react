@@ -25,9 +25,9 @@ describe('Selector', () => {
     expect(driver.subtitleTextDriver().exists()).toBe(false);
   });
 
-  it('should not render the extra text by default', () => {
+  it('should not render the extra node', () => {
     const driver = createDriver(<Selector {...defaultProps}/>);
-    expect(driver.extraTextDriver().exists()).toBe(false);
+    expect(driver.hasExtraNode()).toBe(false);
   });
 
   it('should render the title', () => {
@@ -41,10 +41,11 @@ describe('Selector', () => {
     expect(driver.subtitleTextDriver().getText()).toBe('sub title');
   });
 
-  it('should render the extra text', () => {
-    const props = {...defaultProps, ...{extraText: 'extra text'}};
+  it('should render the extra node', () => {
+    const props = {...defaultProps, ...{extraNode: 'extra text'}};
     const driver = createDriver(<Selector {...props}/>);
-    expect(driver.extraTextDriver().getText()).toBe('extra text');
+    expect(driver.hasExtraNode()).toBe(true);
+    expect(driver.getExtraNode().textContent).toBe('extra text');
   });
 
   it('should not render the image by default', () => {

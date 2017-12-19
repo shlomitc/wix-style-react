@@ -14,7 +14,7 @@ const selectorDriverFactory = ({element, wrapper, component}) => {
   const image = () => element.querySelector('[data-hook="selector-image"]');
   const titleTextDriver = () => textTestkitFactory({wrapper: element, dataHook: 'selector-title'});
   const subtitleTextDriver = () => textTestkitFactory({wrapper: element, dataHook: 'selector-subtitle'});
-  const extraTextDriver = () => textTestkitFactory({wrapper: element, dataHook: 'selector-extra-text'});
+  const extraNode = () => element.querySelector('[data-hook="selector-extra-node"]');
 
   return {
     exists: () => !!element,
@@ -31,7 +31,8 @@ const selectorDriverFactory = ({element, wrapper, component}) => {
     getImage: () => image().childNodes[0],
     titleTextDriver,
     subtitleTextDriver,
-    extraTextDriver,
+    hasExtraNode: () => !!extraNode(),
+    getExtraNode: () => extraNode().childNodes[0],
     toggle: () => ReactTestUtils.Simulate.click(el[0]),
     setProps: props => {
       const ClonedWithProps = React.cloneElement(component, Object.assign({}, component.props, props), ...(component.props.children || []));
