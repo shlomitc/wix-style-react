@@ -17,7 +17,7 @@
 | onRequestClose | func | - | - |  |
 | onAfterOpen | func | - | - |  |
 | horizontalPosition | start, center, end | center | - | horizontal position of the modal |
-| verticalPosition | start, center, end | start | - | vertical position of the modal |
+| verticalPosition | start, center, end | center | - | vertical position of the modal |
 | closeTimeoutMS | number | 500 | - | Number indicating the milliseconds to wait before closing the modal |
 | scrollable | boolean | true | - | Specifies if modal portal supports scroll |
 | scrollableContent | boolean | false | - | Specifies if modal content should become scrollable when modal size will fit the window |

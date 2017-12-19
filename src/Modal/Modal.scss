@@ -1,3 +1,5 @@
+@import '../common.scss';
+
 $wix-modal-easeOutQuint: cubic-bezier(0.23, 1, 0.32, 1);
 $wix-ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
@@ -28,15 +30,15 @@ $wix-ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
       }
     }
     .ReactModal__Overlay {
-      background: rgba(30, 30, 30, 0);
+      background: rgba($D10, 0);
       opacity: 1;
       &--after-open {
-        background: rgba(30, 30, 30, 0.6);
+        background: rgba($D10, 0.66);
         transition: background 0.2s $wix-modal-easeOutQuint;
       }
       &--before-close {
         pointer-events: none;
-        background: rgba(30, 30, 30, 0);
+        background: rgba($D10, 0);
         transition: background 0.15s $wix-ease-out-quad;
       }
     }
