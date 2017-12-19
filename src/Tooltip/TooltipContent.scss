@@ -85,13 +85,13 @@ $shadow: 0 6px 6px 0 rgba(22, 45, 60, 0.06), 0 0 18px 0 rgba(22, 45, 60, 0.12);
 
 .fadeIn { animation: fadeIn .3s cubic-bezier(0.23, 1, 0.32, 1) both; }
 
-.bounce-on-top, .bounce-on-bottom { animation: bounceVertically   1s ease infinite; }
-.bounce-on-left, .bounce-on-right { animation: bounceHorizontally 1s ease infinite; }
+.bounce-top, .bounce-bottom { animation: bounceVertically   1s ease infinite; }
+.bounce-left, .bounce-right { animation: bounceHorizontally 1s ease infinite; }
 
-.bounce-on-top,
-.bounce-on-bottom,
-.bounce-on-left,
-.bounce-on-right {
+.bounce-top,
+.bounce-bottom,
+.bounce-left,
+.bounce-right {
   &:hover {
     animation-play-state: paused;
     -webkit-animation-play-state: paused;

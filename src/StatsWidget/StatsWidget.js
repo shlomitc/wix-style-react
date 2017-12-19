@@ -5,7 +5,7 @@ import WixComponent from '../BaseComponents/WixComponent';
 import styles from './StatsWidget.scss';
 import Text from '../Text';
 import classnames from 'classnames';
-import {ArrowVertical} from '../Icons';
+import ArrowVertical from '../Icons/dist/components/ArrowVertical';
 import Dropdown from '../Dropdown';
 
 /**
