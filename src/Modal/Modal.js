@@ -25,7 +25,7 @@ class Modal extends WixComponent {
     height: PropTypes.string,
     overlayPosition: PropTypes.oneOf(Object.keys(positions)),
     parentSelector: PropTypes.func
-  }
+  };
 
   static defaultProps = {
     onOk: () => {
@@ -41,7 +41,7 @@ class Modal extends WixComponent {
     height: 'auto',
     maxHeight: 'auto',
     overlayPosition: 'fixed'
-  }
+  };
 
   render() {
     const {
