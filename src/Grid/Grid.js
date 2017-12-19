@@ -100,6 +100,10 @@ class Col extends Component {
     dataHook: PropTypes.string
   };
 
+  static defaultProps = {
+    span: 12
+  };
+
   isVisibleHidden(str) {
     return str === 'hidden' || str === 'visible';
   }
