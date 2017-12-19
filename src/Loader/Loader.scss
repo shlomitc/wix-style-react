@@ -50,8 +50,6 @@
 
   &.small {
     .arcsContainer {
-      width: 30px;
-      height: 30px;
 
       .lightArc {
         animation: rotation 2s linear infinite;
@@ -65,8 +63,6 @@
 
   &.medium {
     .arcsContainer {
-      width: 54px;
-      height: 54px;
       animation: rotation 2s linear infinite;
 
       .lightArc {
@@ -77,8 +73,6 @@
 
   &.large {
     .arcsContainer {
-      width: 102px;
-      height: 102px;
       animation: rotation 2s linear infinite;
 
       .lightArc {

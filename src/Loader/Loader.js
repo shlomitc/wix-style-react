@@ -55,7 +55,12 @@ export default class Loader extends WixComponent {
 
     return (
       <div className={classNames(css.loaderContainer, css[size], css[color])}>
-        <div className={css.arcsContainer}>
+        <div
+          className={css.arcsContainer}
+          style={{
+            width: `${sizeInPx}px`,
+            height: `${sizeInPx}px`}}
+          >
           <Arc
             angle={lightArcAngle}
             className={css.lightArc}
