@@ -29,7 +29,7 @@ describe('RadioGroup', () => {
     waitForVisibilityOf(radioGroupDriver.element(), 'Cannot find RadioGroup')
       .then(() => {
         expect(radioGroupDriver.isRadioDisabled(3)).toBe(true);
-        radioGroupDriver.selectByIndex(3).click();
+        browser.actions().mouseMove(radioGroupDriver.getRadioAtIndex(3)).click();
         expect(radioGroupDriver.isRadioChecked(3)).toBe(false);
       });
   });
