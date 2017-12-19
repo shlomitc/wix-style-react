@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import {mount} from 'enzyme';
-import {Col, Row} from './Grid';
+import {Col, Columns} from './Grid';
 import classNames from 'classnames';
 
 describe('Grid', () => {
@@ -101,8 +101,8 @@ describe('Grid', () => {
       expect(element.hasClass('test')).toEqual(true);
     });
 
-    it('should pass className to row element', () => {
-      const element = mount(<Row className="test"/>);
+    it('should pass className to columns element', () => {
+      const element = mount(<Columns className="test"/>);
       expect(element.hasClass('test')).toEqual(true);
     });
 
@@ -112,21 +112,21 @@ describe('Grid', () => {
       expect(element.hasClass('test2')).toEqual(true);
     });
 
-    it('should pass className to row element', () => {
-      const element = mount(<Row className={classNames('test1', 'test2')}/>);
+    it('should pass className to columns element', () => {
+      const element = mount(<Columns className={classNames('test1', 'test2')}/>);
       expect(element.hasClass('test1')).toEqual(true);
       expect(element.hasClass('test2')).toEqual(true);
     });
   });
 
   describe('support dataHook', () => {
-    it('for Row', () => {
+    it('for Col', () => {
       const element = mount(<Col dataHook="test"/>);
       expect(element.find('[data-hook="test"]').length).toEqual(1);
     });
 
-    it('for Col', () => {
-      const element = mount(<Row dataHook="test"/>);
+    it('for Columns', () => {
+      const element = mount(<Columns dataHook="test"/>);
       expect(element.find('[data-hook="test"]').length).toEqual(1);
     });
   });

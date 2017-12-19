@@ -43,11 +43,11 @@ storiesOf('Common', module)
         <ExampleGridActionHeaders/>
       </CodeExample>
 
-      <CodeExample title="Grid with equal height row" code={ExampleRowWithEqualHeightRaw}>
+      <CodeExample title="Grid with equal height columns" code={ExampleRowWithEqualHeightRaw}>
         <ExampleRowWithEqualHeight/>
       </CodeExample>
 
-      <CodeExample title="Grid with auto adjusted row" code={ExampleAutoAdjustedRowRaw}>
+      <CodeExample title="Grid with auto adjusted columns" code={ExampleAutoAdjustedRowRaw}>
         <ExampleAutoAdjustedRow/>
       </CodeExample>
 

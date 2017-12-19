@@ -7,7 +7,7 @@ export default () =>
     <Container>
       <Row>
         <Card>
-          <Card.Header title="Grid Row - RTL support">
+          <Card.Header title="Grid Columns - RTL support">
                 Row RTL support
             </Card.Header>
           <Card.Content>

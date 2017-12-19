@@ -66,18 +66,18 @@ The card is a container component of a rounded corner layout.
 | withoutDivider | bool | false | - | Whether to show divider or not |
 
 
-#### Row
+#### Columns
 
-A simple row according to the bootstrap docs.
+A simple columns line according to the bootstrap docs.
 
 | propName | propType | defaultValue | isRequired | description |
 |----------|----------|--------------|------------|-------------|
 | rtl | bool | - | - | Reverses the columns ordering |
 | stretchViewsVertically | bool | - | - | Make all the views in that raw the same height |
 
-#### AutoAdjustedRow
+#### AutoAdjustedColumns
 
-A row with as much columns as children with the same width.
+A columns line with as much columns as children with the same width.
 Can be used for multiple (not more than 12) equal cards on the same row.
 If you want that the children will be the at the same height, 
 just add height: 100%; to them (if there isn't already).
