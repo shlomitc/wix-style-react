@@ -82,7 +82,7 @@ import '../stories/RadioGroup'; // 4.3 RadioGroup
 import '../stories/IconWithOptions'; // 4.5 IconWithOptions
 import '../stories/GoogleAddressInputWithLabel'; // 4.8 Google address input
 import '../stories/EditableSelector'; // 4.9 EditableSelector
-import '../stories/ModalSelector'; // 4.10 ModalSelector
+import '../stories/ModalSelectorLayout'; // 4.10 ModalSelectorLayout
 
 
 // 5. Buttons

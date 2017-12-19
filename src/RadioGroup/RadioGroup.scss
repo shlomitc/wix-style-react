@@ -1,111 +1,118 @@
 @import '../common.scss';
 
-.vertical
-{
+.vertical {
   display: flex;
   flex-direction: column;
 }
 
-.horizontal
-{
+.horizontal {
   display: flex;
 }
 
-.horizontal .radio-wrapper > label
-{
+.horizontal .radio-wrapper > label {
   margin-right: 20px;
 }
 
-:global(.rtl) .horizontal .radio-wrapper > label
-{
+:global(.rtl) .horizontal .radio-wrapper > label {
   margin-left: 20px;
 }
 
-.vertical .radio-wrapper
-{
+.vertical .radio-wrapper {
   margin-bottom: 12px;
 }
 
-.radio-wrapper
-{
+.radio-wrapper {
   display: flex;
+
+  &:not(.checked) {
+    .radio:hover:not(:active) {
+      background-color: $B40;
+    }
+  }
 }
 
-.radio-wrapper, .radio-wrapper > *
-{
-    cursor:initial;
-    box-sizing:border-box;
+.radio-wrapper, .radio-wrapper > * {
+  cursor: initial;
+  box-sizing: border-box;
 }
 
-.radio-wrapper > input
-{
-    display: none;
+.radio-wrapper > input {
+  display: none;
 }
 
-.radio-wrapper > label
-{
-    display: flex;
-    flex-direction: row;
-    cursor: pointer;
+.radio-wrapper > label {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+}
+
+.radio-wrapper.disabled > label {
+  cursor: default;
+  pointer-events: none;
 }
 
 :global(.rtl) .radio-wrapper {
-    direction: rtl;
+  direction: rtl;
 }
 
-.radio-wrapper > label.vcenter
-{
-    align-items: center;
+.radio-wrapper > label.vcenter {
+  align-items: center;
 }
 
-.horizontal .children
-{
-    padding-left: 6px;
+.horizontal .children {
+  padding-left: 6px;
 }
 
-.children
-{
-    padding-left: 12px;
+.children {
+  padding-left: 12px;
 }
 
-:global(.rtl) .children
-{
-    padding-right: 12px;
+:global(.rtl) .children {
+  padding-right: 12px;
 }
 
-.radio
-{
-    box-sizing: border-box;
-    display: inline-block;
-    position:relative;
-    min-width: 17px;
-    height: 17px;
-    border: 1px solid $B10;
-    border-radius: 50%;
+.radio {
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+  min-width: 17px;
+  height: 17px;
+  border: 1px solid $B10;
+  background-color: $D80;
+  border-radius: 50%;
 }
 
-.radio.checked:after
-{
-    content:' ';
-    display: block;
-    border-radius: 50%;
+.disabled {
+  .radio {
+    border-color: $D60;
+    background-color: $D70;
+  }
+
+  &.checked .radio:after {
+    background-color: $D55;
+  }
+}
+
+.radio:after,
+.radio:after {
+  content: '';
+  display: block;
+  border-radius: 50%;
+  width: 11px;
+  height: 11px;
+  top: 0;
+  left: 0;
+  margin: 2px;
+}
+
+.checked:not(.disabled):not(:active) {
+  .radio:after {
     background-color: $B10;
-    width: 11px;
-    height: 11px;
-    top:0;
-    left:0;
-    margin:2px;
+  }
 }
 
-.radio:hover
-{
-  background-color: $B50;
-}
-
-.radio.disabled
-{
-   border-color: $GR20;
-   background-color: $GR30;
+.radio:active:after {
+  background-color: $B20;
 }
 
 button.radioButton {

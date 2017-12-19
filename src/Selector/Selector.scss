@@ -4,9 +4,8 @@
   align-items: center;
   cursor: pointer;
   display: flex;
-  height: 84px;
   justify-content: space-between;
-  padding: 0 30px;
+  padding: 12px 30px;
 
   &:hover {
     background-color: $B50;
@@ -24,5 +23,50 @@
 
   .extra {
     max-width: 180px;
+  }
+}
+
+.image {
+  overflow: hidden;
+  margin-left: 8px;
+  margin-right: 20px;
+
+  &.tiny {
+    width: 24px;
+    height: 24px;
+  }
+
+  &.small {
+    width: 42px;
+    height: 42px;
+  }
+
+  &.portrait {
+    width: 48px;
+    height: 60px;
+  }
+
+  &.large {
+    width: 60px;
+    height: 60px;
+  }
+
+  &.cinema {
+    width: 102px;
+    height: 60px;
+  }
+
+  &.rectangular {
+    &.tiny, &.small {
+      border-radius: 4px;
+    }
+
+    &.portrait, &.large, &.cinema {
+      border-radius: 6px;
+    }
+  }
+
+  &.circle {
+    border-radius: 50%;
   }
 }

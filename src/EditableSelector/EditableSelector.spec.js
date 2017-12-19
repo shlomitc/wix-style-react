@@ -27,7 +27,7 @@ describe('EditableSelector', () => {
     const driver = createDriver(<EditableSelector {...props}/>);
     const selector = driver.items()[0];
     expect(selector.isChecked()).toEqual(props.options[0].isSelected);
-    expect(selector.getTitle()).toEqual(props.options[0].title);
+    expect(selector.titleTextDriver().getText()).toEqual(props.options[0].title);
   });
 
   it('should render a title', () => {

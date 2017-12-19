@@ -1,18 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
+import {testkitFactoryCreator} from '../test-common';
+import {isClassExists} from '../../test/utils';
 import $ from 'jquery';
+import textDriverFactory from '../Text/Text.driver';
+
+const textTestkitFactory = testkitFactoryCreator(textDriverFactory);
 
 const selectorDriverFactory = ({element, wrapper, component}) => {
   const el = $(element);
   const toggleInput = () => el.find('[data-hook="toggle"]').children('input').eq(0);
+  const image = () => element.querySelector('[data-hook="selector-image"]');
+  const titleTextDriver = () => textTestkitFactory({wrapper: element, dataHook: 'selector-title'});
+  const subtitleTextDriver = () => textTestkitFactory({wrapper: element, dataHook: 'selector-subtitle'});
+  const extraTextDriver = () => textTestkitFactory({wrapper: element, dataHook: 'selector-extra-text'});
 
   return {
     exists: () => !!element,
+    isImageTiny: () => isClassExists(image(), 'tiny'),
+    isImageSmall: () => isClassExists(image(), 'small'),
+    isImagePortrait: () => isClassExists(image(), 'portrait'),
+    isImageLarge: () => isClassExists(image(), 'large'),
+    isImageCinema: () => isClassExists(image(), 'cinema'),
+    isImageCircle: () => isClassExists(image(), 'circle'),
+    isImageRectangular: () => isClassExists(image(), 'rectangular'),
     toggleType: () => toggleInput().prop('type'),
     isChecked: () => !!toggleInput().prop('checked'),
-    getTitle: () => el.find('[data-hook="title"] > span').text(),
-    getSubTitle: () => el.find('[data-hook="subtitle"] > span').text(),
+    hasImage: () => !!image(),
+    getImage: () => image().childNodes[0],
+    titleTextDriver,
+    subtitleTextDriver,
+    extraTextDriver,
     toggle: () => ReactTestUtils.Simulate.click(el[0]),
     setProps: props => {
       const ClonedWithProps = React.cloneElement(component, Object.assign({}, component.props, props), ...(component.props.children || []));

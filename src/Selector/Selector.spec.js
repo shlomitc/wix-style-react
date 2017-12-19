@@ -20,25 +20,48 @@ describe('Selector', () => {
     expect(driver.isChecked()).toBeFalsy();
   });
 
+  it('should not render the subtitle by default', () => {
+    const driver = createDriver(<Selector {...defaultProps}/>);
+    expect(driver.subtitleTextDriver().exists()).toBe(false);
+  });
+
+  it('should not render the extra text by default', () => {
+    const driver = createDriver(<Selector {...defaultProps}/>);
+    expect(driver.extraTextDriver().exists()).toBe(false);
+  });
+
   it('should render the title', () => {
     const driver = createDriver(<Selector {...defaultProps}/>);
-    expect(driver.getTitle()).toBe(defaultProps.title);
+    expect(driver.titleTextDriver().getText()).toBe(defaultProps.title);
   });
 
-  it('should not render the sub title by default', () => {
-    const driver = createDriver(<Selector {...defaultProps}/>);
-    expect(driver.getSubTitle()).toBe('');
-  });
-
-  it('should render the sub title', () => {
-    const props = {...defaultProps, ...{subTitle: 'sub title'}};
+  it('should render the subtitle', () => {
+    const props = {...defaultProps, ...{subtitle: 'sub title'}};
     const driver = createDriver(<Selector {...props}/>);
-    expect(driver.getSubTitle()).toBe('sub title');
+    expect(driver.subtitleTextDriver().getText()).toBe('sub title');
   });
 
-  it('should render a checkbox toggle by default', () => {
+  it('should render the extra text', () => {
+    const props = {...defaultProps, ...{extraText: 'extra text'}};
+    const driver = createDriver(<Selector {...props}/>);
+    expect(driver.extraTextDriver().getText()).toBe('extra text');
+  });
+
+  it('should not render the image by default', () => {
     const driver = createDriver(<Selector {...defaultProps}/>);
-    expect(driver.toggleType()).toBe('checkbox');
+    expect(driver.hasImage()).toBe(false);
+  });
+
+  it('should render the image', () => {
+    const driver = createDriver(<Selector {...defaultProps} image={<img src="img.png"/>}/>);
+    expect(driver.hasImage()).toBe(true);
+    expect(driver.getImage()).toBeInstanceOf(HTMLImageElement);
+    expect(driver.getImage().src).toBe('img.png');
+  });
+
+  it('should render a radio toggle by default', () => {
+    const driver = createDriver(<Selector {...defaultProps}/>);
+    expect(driver.toggleType()).toBe('radio');
   });
 
   it('should render a checkbox toggle', () => {
@@ -61,8 +84,8 @@ describe('Selector', () => {
       const div = document.createElement('div');
       const dataHook = 'myDataHook';
       const wrapper = div.appendChild(ReactTestUtils.renderIntoDocument(<div><Selector {...defaultProps} dataHook={dataHook}/></div>));
-      const checkboxTestkit = selectorTestkitFactory({wrapper, dataHook});
-      expect(checkboxTestkit.exists()).toBeTruthy();
+      const selectorTestkit = selectorTestkitFactory({wrapper, dataHook});
+      expect(selectorTestkit.exists()).toBeTruthy();
     });
   });
 

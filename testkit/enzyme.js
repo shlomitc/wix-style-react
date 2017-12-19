@@ -186,9 +186,6 @@ export const editableSelectorTestkitFactory = enzymeTestkitFactoryCreator(editab
 import editableRowDriverFactory from '../src/EditableSelector/EditableRow/EditableRow.driver';
 export const editableRowTestkitFactory = enzymeTestkitFactoryCreator(editableRowDriverFactory);
 
-import modalSelectorDriverFactory from '../src/ModalSelector/ModalSelector.driver';
-export const modalSelectorTestkitFactory = enzymeTestkitFactoryCreator(modalSelectorDriverFactory);
-
 import iconWithOptionsDriverFactory from '../src/IconWithOptions/IconWithOptions.driver';
 export const iconWithOptionsTestkitFactory = enzymeTestkitFactoryCreator(iconWithOptionsDriverFactory);
 
@@ -200,3 +197,6 @@ export const highlighterTestkitFactory = enzymeTestkitFactoryCreator(highlighter
 
 import statsWidgetDriverFactory from '../src/StatsWidget/StatsWidget.driver';
 export const statsWidgetTestkitFactory = enzymeTestkitFactoryCreator(statsWidgetDriverFactory);
+
+import modalSelectorLayoutDriverFactory from '../src/ModalSelectorLayout/ModalSelectorLayout.driver';
+export const modalSelectorLayoutTestkitFactory = enzymeTestkitFactoryCreator(modalSelectorLayoutDriverFactory);

@@ -1,0 +1,54 @@
+@import '../common.scss';
+
+.modalContent {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  background: $D80;
+}
+
+.modalBody {
+  flex: 1;
+  overflow: auto;
+
+  .mediumLoaderWrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .smallLoaderWrapper {
+    width: 100%;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .emptyStateWrapper {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.list {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.subheaderWrapper {
+  padding: 30px 30px 12px;
+}
+
+.noResultsFoundStateWrapper {
+  margin: 0 30px;
+}
+
+.subtitleWrapper + .searchWrapper {
+  margin-top: 18px;
+}

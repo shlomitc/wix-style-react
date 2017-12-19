@@ -73,14 +73,14 @@ describe('RadioGroup', () => {
 
     it('should have a default vcenter class', () => {
       const driver = createDriver(elementToRender());
-      expect(driver.getClassOfLabelAt(0)).toBe('vcenter t1_1');
-      expect(driver.getClassOfLabelAt(1)).toBe('vcenter t1_1');
+      expect(driver.getClassOfLabelAt(0)).toContain('vcenter');
+      expect(driver.getClassOfLabelAt(1)).toContain('vcenter');
     });
 
     it('should have a vtop class', () => {
       const driver = createDriver(elementToRender({vAlign: 'top'}));
-      expect(driver.getClassOfLabelAt(0)).toBe('vtop t1_1');
-      expect(driver.getClassOfLabelAt(1)).toBe('vtop t1_1');
+      expect(driver.getClassOfLabelAt(0)).toContain('vtop');
+      expect(driver.getClassOfLabelAt(1)).toContain('vtop');
     });
   });
 
@@ -112,6 +112,18 @@ describe('RadioGroup', () => {
     it('should have default value', () => {
       const driver = createDriver(elementToRender());
       expect(driver.lineHeight()).toBe(RadioGroup.defaultProps.lineHeight);
+    });
+  });
+
+  describe('label appearance', () => {
+    it('should be T1.1 by default', () => {
+      const driver = createDriver(elementToRender());
+      expect(driver.getClassOfLabelAt(0)).toContain('t1_1');
+    });
+
+    it('should be T1.4 when disabled', () => {
+      const driver = createDriver(elementToRender({disabled: true}));
+      expect(driver.getClassOfLabelAt(0)).toContain('t1_4');
     });
   });
 

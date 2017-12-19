@@ -114,7 +114,7 @@ class ControlledSelector extends Component {
                   <Selector
                     title={this.state.title}
                     id={this.state.id}
-                    subTitle={this.state.hasSubtitle ? this.state.subtitle : ''}
+                    subtitle={this.state.hasSubtitle ? this.state.subtitle : ''}
                     imageSrc={this.state.hasImage ? this.state.imageSrc : ''}
                     imageSize={Image.types[this.state.imageSize]}
                     isSelected={this.state.selected}

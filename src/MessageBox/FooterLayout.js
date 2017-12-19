@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../Backoffice/Button';
 import * as styles from './FooterLayout.scss';
+import classNames from 'classnames';
 
-const FooterLayout = ({children, theme, cancelText, onCancel, onOk, confirmText, buttonsHeight, enableOk, enableCancel}) => {
+const FooterLayout = ({children, theme, cancelText, onCancel, onOk, confirmText, buttonsHeight, enableOk, enableCancel, allPaddings}) => {
 
   return (
-    <div className={styles.footer} data-hook="message-box-footer">
+    <div className={classNames(styles.footer, {[styles.allPaddings]: allPaddings})} data-hook="message-box-footer">
       {children}
       <div className={styles.footerbuttons}>
         {cancelText ?
@@ -31,14 +32,16 @@ FooterLayout.propTypes = {
   enableCancel: PropTypes.bool,
   theme: PropTypes.string,
   buttonsHeight: PropTypes.string,
-  children: PropTypes.any
+  children: PropTypes.any,
+  allPaddings: PropTypes.bool
 };
 
 FooterLayout.defaultProps = {
   theme: 'blue',
   buttonsHeight: 'small',
   enableOk: true,
-  enableCancel: true
+  enableCancel: true,
+  allPaddings: false
 };
 
 export default FooterLayout;

@@ -189,9 +189,6 @@ export const editableSelectorTestkitFactory = testkitFactoryCreator(editableSele
 import editableRowDriverFactory from '../src/EditableSelector/EditableRow/EditableRow.driver';
 export const editableRowTestkitFactory = testkitFactoryCreator(editableRowDriverFactory);
 
-import modalSelectorDriverFactory from '../src/ModalSelector/ModalSelector.driver';
-export const modalSelectorTestkitFactory = testkitFactoryCreator(modalSelectorDriverFactory);
-
 import iconWithOptionsDriverFactory from '../src/IconWithOptions/IconWithOptions.driver';
 export const iconWithOptionsTestkitFactory = testkitFactoryCreator(iconWithOptionsDriverFactory);
 
@@ -203,3 +200,6 @@ export const highlighterTestkitFactory = testkitFactoryCreator(highlighterDriver
 
 import statsWidgetDriverFactory from '../src/StatsWidget/StatsWidget.driver';
 export const statsWidgetTestkitFactory = testkitFactoryCreator(statsWidgetDriverFactory);
+
+import modalSelectorLayoutDriverFactory from '../src/ModalSelectorLayout/ModalSelectorLayout.driver';
+export const modalSelectorLayoutTestkitFactory = testkitFactoryCreator(modalSelectorLayoutDriverFactory);
