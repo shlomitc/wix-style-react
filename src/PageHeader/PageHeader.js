@@ -133,9 +133,9 @@ PageHeader.propTypes = {
   /** Breadcrumbs object to display */
   breadcrumbs: PropTypes.node,
   /** Title to display */
-  title: PropTypes.string.isRequired,
+  title: PropTypes.node.isRequired,
   /** Subtitle to display */
-  subtitle: PropTypes.string,
+  subtitle: PropTypes.node,
   /** Should display back button */
   showBackButton: PropTypes.bool,
   /** Callback when back button clicked */
