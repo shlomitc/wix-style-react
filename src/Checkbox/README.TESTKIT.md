@@ -4,16 +4,17 @@
 
 ## Checkbox TestKit API
 
-| method | arguments | returned value | description |
-|--------|-----------|----------------|-------------|
-| getInput | - | element | returns checkbox input element |
-| getLabel | - | element | returns checkbox label element |
-| isChecked | - | bool | fulfilled if element has class '.checked' |
-| isDisabled | - | bool | fulfilled if element has class '.disabled' |
-| isIndeterminate | - | bool | fulfilled if element has class '.indeterminate' |
-| click | - | - | clicks on the checkbox |
-| exists (Only in Unit Test) | - | bool | fulfilled if element in the DOM |
-| element (Only in E2E) | - | element | returns the driver element |
+| method                     | arguments | returned value                           | description                              |
+| -------------------------- | --------- | ---------------------------------------- | ---------------------------------------- |
+| getInput                   | -         | element                                  | returns checkbox input element           |
+| getLabel                   | -         | element                                  | returns checkbox label element           |
+| getLabelDriver             | -         | instance of [label driver](https://wix.github.io/wix-style-react/?selectedKind=Core&selectedStory=Label&full=0&down=0&left=1&panelRight=0) | label testkit instantiated with checkbox's inner label |
+| isChecked                  | -         | bool                                     | fulfilled if element has class '.checked' |
+| isDisabled                 | -         | bool                                     | fulfilled if element has class '.disabled' |
+| isIndeterminate            | -         | bool                                     | fulfilled if element has class '.indeterminate' |
+| click                      | -         | -                                        | clicks on the checkbox                   |
+| exists (Only in Unit Test) | -         | bool                                     | fulfilled if element in the DOM          |
+| element (Only in E2E)      | -         | element                                  | returns the driver element               |
 
 ## Usage Example
 
