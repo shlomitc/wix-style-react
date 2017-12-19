@@ -6,6 +6,7 @@
 
 | method | arguments | returned value | description |
 |--------|-----------|----------------|-------------|
+| getRadioAtIndex | index | - | get RadioButton element in a group by it's index |
 | selectByIndex | index | - | click on RadioButton in a group by it's index |
 | selectByValue | index | - | click on RadioButton in a group by it's value |
 | getClassOfLabelAt | index | string | returns RadioButton class by it's index |
