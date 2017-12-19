@@ -31,9 +31,16 @@ describe('Checkbox', () => {
     expect(driver.hasError()).toBeTruthy();
   });
 
-  it('should have a label', () => {
-    const driver = createDriver(<Checkbox disabled>Hey</Checkbox>);
+  it('should have a label with T1.1 appearance', () => {
+    const driver = createDriver(<Checkbox>Hey</Checkbox>);
     expect(driver.getLabel()).toBe('Hey');
+    expect(driver.getLabelDriver().getClassList()).toBe('t1_1');
+  });
+
+  it('should have label with apearance of T1.4 when disabled', () => {
+    const driver = createDriver(<Checkbox disabled>Bye</Checkbox>);
+    expect(driver.getLabel()).toBe('Bye');
+    expect(driver.getLabelDriver().getClassList()).toBe('t1_4');
   });
 
   it('should call onChange when clicking the Checkbox', () => {

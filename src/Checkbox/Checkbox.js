@@ -75,7 +75,7 @@ class Checkbox extends WixComponent {
           style={{display: 'none'}}
           />
 
-        <Label for={id} appearance="T1.1">
+        <Label for={id} appearance={disabled ? 'T1.4' : 'T1.1'} dataHook="checkbox-label">
           <div className={classNames(styles.checkbox, styles[size])}>
             <div className={styles.inner}>
               {checkedSymbol}
