@@ -15,16 +15,15 @@ class RadioButton extends WixComponent {
   render() {
     const {value, vAlign, checked, disabled, name, type, onChange, style, lineHeight} = this.props;
 
-    const radioClasses = classNames({
-      [styles.radio]: true,
-      [styles.checked]: checked,
-      [styles.disabled]: disabled
+    const radioWrapperClasses = classNames(styles.radioWrapper, {
+      [styles.disabled]: disabled,
+      [styles.checked]: checked
     });
 
     const labelClasses = classNames({
       [styles.vcenter]: vAlign === 'center',
       [styles.vtop]: vAlign === 'top',
-      [typography[convertFromUxLangToCss('T1.1')]]: true
+      [typography[convertFromUxLangToCss(disabled ? 'T1.4' : 'T1.1')]]: true
     });
 
     const buttonClasses = classNames({
@@ -46,7 +45,7 @@ class RadioButton extends WixComponent {
             {children ? <span>{children}</span> : null}
           </button>
         ) : (
-          <div className={styles.radioWrapper} style={style}>
+          <div className={radioWrapperClasses} style={style}>
             <input
               type="radio"
               name={name}
@@ -58,7 +57,7 @@ class RadioButton extends WixComponent {
               />
             <label style={{lineHeight}} htmlFor={this.id} className={labelClasses} data-hook="radio-label">
               <div style={{height: lineHeight}} className={styles.radioButtonWrapper}>
-                <div className={radioClasses}/>
+                <div className={styles.radio}/>
               </div>
               <div className={styles.children}>
                 {this.props.children}
@@ -71,7 +70,8 @@ class RadioButton extends WixComponent {
 }
 
 RadioButton.defaultProps = {
-  vAlign: 'center'
+  vAlign: 'center',
+  type: 'default'
 };
 
 RadioButton.propTypes = {
@@ -83,7 +83,7 @@ RadioButton.propTypes = {
   disabled: PropTypes.bool,
   children: PropTypes.any,
   style: PropTypes.object,
-  type: PropTypes.string,
+  type: PropTypes.oneOf(['default', 'button']),
   lineHeight: PropTypes.string
 };
 
