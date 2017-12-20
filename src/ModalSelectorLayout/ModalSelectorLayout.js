@@ -9,6 +9,7 @@ import Selector from '../Selector/Selector';
 import Search from '../Search/Search';
 import InfiniteScroll from '../DataTable/InfiniteScroll';
 import Text from '../Text/Text';
+import {dataHooks} from './ModalSelectorLayout.helpers';
 
 /**
  * Use this component when needed to select one / multiple items having complex descriptions.
@@ -97,9 +98,9 @@ export default class ModalSelectorLayout extends WixComponent {
     itemsPerPage: 50,
     withSearch: true,
     height: '100%',
-    emptyState: <Text appearance="T1">{`You don't have any items`}</Text>,
+    emptyState: <div className={css.defaultEmptyStateWrapper}><Text appearance="T1">{`You don't have any items`}</Text></div>,
     noResultsFoundStateFactory: searchValue =>
-      <Text appearance="T1">No items matched your search {`"${searchValue}"`}</Text>
+      <div className={css.defaultNoResultsFoundStateWrapper}><Text appearance="T1">No items matched your search {`"${searchValue}"`}</Text></div>
   };
 
   state = {
@@ -144,13 +145,13 @@ export default class ModalSelectorLayout extends WixComponent {
         {isLoaded && !isEmpty && <div className={css.subheaderWrapper}>
           {subtitle &&
           <div className={css.subtitleWrapper}>
-            <Text appearance="T1" dataHook="modal-selector-subtitle">{subtitle}</Text>
+            <Text appearance="T1" dataHook={dataHooks.subtitle}>{subtitle}</Text>
           </div>
           }
           {withSearch &&
           <div className={css.searchWrapper}>
             <Search
-              dataHook="modal-selector-search"
+              dataHook={dataHooks.search}
               placeholder={searchPlaceholder}
               value={searchValue}
               onChange={e => this._onSearchChange(e)}
@@ -158,18 +159,18 @@ export default class ModalSelectorLayout extends WixComponent {
           </div>
           }
         </div>}
-        <div className={css.modalBody} data-hook="modal-selector-modal-body">
+        <div className={css.modalBody} data-hook={dataHooks.modalBody}>
           {
             ((items.length === 0 && !isLoaded) || isSearching) &&
-            <div className={css.mediumLoaderWrapper}>
+            <div className={css.mainLoaderWrapper}>
               <Loader
                 size="medium"
-                dataHook="modal-selector-medium-loader"
+                dataHook={dataHooks.mainLoader}
                 />
             </div>
           }
           {isEmpty &&
-          <div data-hook="modal-selector-empty-state" className={css.emptyStateWrapper}>
+          <div data-hook={dataHooks.emptyState} className={css.emptyStateWrapper}>
             {emptyState}
           </div>
           }
@@ -180,10 +181,10 @@ export default class ModalSelectorLayout extends WixComponent {
             hasMore={this._hasMore()}
             useWindow={false}
             loader={items.length > 0 &&
-            <div className={css.smallLoaderWrapper}>
+            <div className={css.nextPageLoaderWrapper}>
               <Loader
                 size="small"
-                dataHook="modal-selector-small-loader"
+                dataHook={dataHooks.nextPageLoader}
                 />
             </div>}
             >
@@ -192,7 +193,7 @@ export default class ModalSelectorLayout extends WixComponent {
           }
           {shouldShowNoResultsFoundState &&
           <div
-            data-hook="modal-selector-no-results-found-state"
+            data-hook={dataHooks.noResultsFoundState}
             className={css.noResultsFoundStateWrapper}
             >
             {noResultsFoundStateFactory(searchValue)}
@@ -200,7 +201,7 @@ export default class ModalSelectorLayout extends WixComponent {
           }
         </div>
         <FooterLayout
-          allPaddings={isLoaded}
+          withTopPadding={isLoaded}
           onCancel={onCancel}
           onOk={() => onOk(selectedItem)}
           cancelText={cancelButtonText}
@@ -217,12 +218,12 @@ export default class ModalSelectorLayout extends WixComponent {
 
     if (items.length > 0) {
       return (
-        <ul data-hook="modal-selector-list" className={css.list}>
+        <ul data-hook={dataHooks.list} className={css.list}>
           {items.map(item => (
             <Selector
               id={item.id}
               key={item.id}
-              dataHook={`modal-selector-selector`}
+              dataHook={dataHooks.selector}
               imageSize={imageSize}
               imageShape={imageShape}
               toggleType="radio"

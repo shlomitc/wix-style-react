@@ -5,6 +5,7 @@ import buttonDriverFactory from '../Backoffice/Button/Button.driver';
 import selectorDriverFactory from '../Selector/Selector.driver';
 import searchDriverFactory from '../Search/Search.driver';
 import textDriverFactory from '../Text/Text.driver';
+import {dataHooks} from './ModalSelectorLayout.helpers';
 
 const textTestkitFactory = testkitFactoryCreator(textDriverFactory);
 const loaderTestkitFactory = testkitFactoryCreator(loaderDriverFactory);
@@ -13,13 +14,13 @@ const searchTestkitFactory = testkitFactoryCreator(searchDriverFactory);
 
 const modalSelectorLayoutDriverFactory = ({element}) => {
   const findInModalbyDataHook = dataHook => element.querySelector(`[data-hook="${dataHook}"]`);
-  const mediumLoaderDriver = () => loaderTestkitFactory({
+  const mainLoaderDriver = () => loaderTestkitFactory({
     wrapper: element,
-    dataHook: 'modal-selector-medium-loader'
+    dataHook: dataHooks.mainLoader
   });
-  const smallLoaderDriver = () => loaderTestkitFactory({
+  const nextPageLoaderDriver = () => loaderTestkitFactory({
     wrapper: element,
-    dataHook: 'modal-selector-small-loader'
+    dataHook: dataHooks.nextPageLoader
   });
   const cancelButtonDriver = () => buttonTestkitFactory({
     wrapper: element,
@@ -31,23 +32,23 @@ const modalSelectorLayoutDriverFactory = ({element}) => {
   });
   const subtitleTextDriver = () => textTestkitFactory({
     wrapper: element,
-    dataHook: 'modal-selector-subtitle'
+    dataHook: dataHooks.subtitle
   });
   const searchDriver = () => searchTestkitFactory({
     wrapper: element,
-    dataHook: 'modal-selector-search'
+    dataHook: dataHooks.search
   });
-  const getList = () => findInModalbyDataHook('modal-selector-list');
-  const getModalBody = () => findInModalbyDataHook('modal-selector-modal-body');
-  const getSelectors = () => getList().querySelectorAll('[data-hook="modal-selector-selector"]');
+  const getList = () => findInModalbyDataHook(dataHooks.list);
+  const getModalBody = () => findInModalbyDataHook(dataHooks.modalBody);
+  const getSelectors = () => getList().querySelectorAll(`[data-hook="${dataHooks.selector}"]`);
   const selectorDriverAt = i => selectorDriverFactory({element: getSelectors()[i]});
-  const emptyState = () => findInModalbyDataHook('modal-selector-empty-state');
-  const noResultsFoundState = () => findInModalbyDataHook('modal-selector-no-results-found-state');
+  const emptyState = () => findInModalbyDataHook(dataHooks.emptyState);
+  const noResultsFoundState = () => findInModalbyDataHook(dataHooks.noResultsFoundState);
 
   return {
     exists: () => !!element,
-    mediumLoaderDriver,
-    smallLoaderDriver,
+    mainLoaderDriver,
+    nextPageLoaderDriver,
     cancelButtonDriver,
     okButtonDriver,
     searchDriver,

@@ -35,7 +35,6 @@ import '../stories/Tag';
 import '../stories/TimeInput';
 import '../stories/ToggleSwitch';
 import '../stories/Tooltip/Core';
-import '../stories/Selector';
 import '../stories/ThemedButton';
 import '../stories/ThemedInput';
 import '../stories/ThemedToggleSwitch';

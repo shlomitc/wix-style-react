@@ -34,8 +34,8 @@ describe('ModalSelectorLayout', () => {
   describe('layout', () => {
     it('should show medium loader', () => {
       const driver = createDriverWithProps({isOpen: true});
-      expect(driver.mediumLoaderDriver().exists()).toBe(true);
-      expect(driver.mediumLoaderDriver().isMedium()).toBe(true);
+      expect(driver.mainLoaderDriver().exists()).toBe(true);
+      expect(driver.mainLoaderDriver().isMedium()).toBe(true);
     });
 
     it('should disable "OK" button while loading', () => {
@@ -53,7 +53,7 @@ describe('ModalSelectorLayout', () => {
 
       await flushPromises();
 
-      expect(driver.mediumLoaderDriver().exists()).toBe(false);
+      expect(driver.mainLoaderDriver().exists()).toBe(false);
       expect(driver.showsNoResultsFoundState()).toBe(false);
       expect(driver.searchDriver().exists()).toBe(false);
       expect(driver.showsEmptyState()).toBe(true);
@@ -72,7 +72,7 @@ describe('ModalSelectorLayout', () => {
 
       await flushPromises();
 
-      expect(driver.mediumLoaderDriver().exists()).toBe(false);
+      expect(driver.mainLoaderDriver().exists()).toBe(false);
       expect(driver.showsEmptyState()).toBe(false);
       expect(driver.listExists()).toBe(true);
       expect(driver.getSelectorDriverAt(0).titleTextDriver().getText()).toBe('rick');
@@ -174,12 +174,12 @@ describe('ModalSelectorLayout', () => {
       driver.searchDriver().inputDriver.focus();
       driver.searchDriver().inputDriver.enterText('title-1');
 
-      expect(driver.mediumLoaderDriver().exists()).toBe(true);
+      expect(driver.mainLoaderDriver().exists()).toBe(true);
 
       await flushPromises();
       driver.scrollDown();
 
-      expect(driver.mediumLoaderDriver().exists()).toBe(false);
+      expect(driver.mainLoaderDriver().exists()).toBe(false);
       expect(driver.numberOfItemsInList()).toBe(1);
       expect(driver.getSelectorDriverAt(0).titleTextDriver().getText()).toBe('title-1');
     });
@@ -226,14 +226,14 @@ describe('ModalSelectorLayout', () => {
       await flushPromises();
 
       expect(driver.numberOfItemsInList()).toBe(50);
-      expect(driver.smallLoaderDriver().exists()).toBe(true);
-      expect(driver.smallLoaderDriver().isSmall()).toBe(true);
+      expect(driver.nextPageLoaderDriver().exists()).toBe(true);
+      expect(driver.nextPageLoaderDriver().isSmall()).toBe(true);
 
       driver.scrollDown();
       await flushPromises();
 
       expect(driver.numberOfItemsInList()).toBe(55);
-      expect(driver.smallLoaderDriver().exists()).toBe(false);
+      expect(driver.nextPageLoaderDriver().exists()).toBe(false);
     });
 
     it('should allow configuring items per page', async () => {

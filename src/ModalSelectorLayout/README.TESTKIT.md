@@ -7,8 +7,8 @@
 | method                   | arguments | returned value                           | description                              |
 | ------------------------ | --------- | ---------------------------------------- | ---------------------------------------- |
 | exists                   | -         | boolean                                  | fulfilled if element in the DOM          |
-| mediumLoaderDriver       | -         | [LoaderDriver](https://wix.github.io/wix-style-react/?selectedKind=Core&selectedStory=Loader&full=0&down=0&left=1&panelRight=0) | Main loader shown while the initial items are loading |
-| smallLoaderDriver        | -         | [LoaderDriver](https://wix.github.io/wix-style-react/?selectedKind=Core&selectedStory=Loader&full=0&down=0&left=1&panelRight=0) | Loader shown at the bottom of the list while loading more items |
+| mainLoaderDriver         | -         | [LoaderDriver](https://wix.github.io/wix-style-react/?selectedKind=Core&selectedStory=Loader&full=0&down=0&left=1&panelRight=0) | Main loader shown while the initial items are loading/being filtered |
+| nextPageLoaderDriver     | -         | [LoaderDriver](https://wix.github.io/wix-style-react/?selectedKind=Core&selectedStory=Loader&full=0&down=0&left=1&panelRight=0) | Loader shown at the bottom of the list while loading the next page |
 | cancelButtonDriver       | -         | [ButtonDriver](https://wix.github.io/wix-style-react/?selectedKind=Backoffice&selectedStory=Button&full=0&down=0&left=1&panelRight=0) | "Cancel" button                          |
 | okButtonDriver           | -         | [ButtonDriver](https://wix.github.io/wix-style-react/?selectedKind=Backoffice&selectedStory=Button&full=0&down=0&left=1&panelRight=0) | "OK" button                              |
 | searchDriver             | -         | [SearchDriver](https://wix.github.io/wix-style-react/?selectedKind=3.%20Inputs&selectedStory=3.9%20Search&full=0&down=0&left=1&panelRight=0) | Search input                             |
@@ -29,8 +29,8 @@
 | method                 | arguments | returned value                           | description                              |
 | ---------------------- | --------- | ---------------------------------------- | ---------------------------------------- |
 | element                | -         | element                                  | returns the driver element               |
-| mediumLoaderDriver     | -         | [LoaderDriver](https://wix.github.io/wix-style-react/?selectedKind=Core&selectedStory=Loader&full=0&down=0&left=1&panelRight=0) | Main loader shown while the initial items are loading |
-| smallLoaderDriver      | -         | [LoaderDriver](https://wix.github.io/wix-style-react/?selectedKind=Core&selectedStory=Loader&full=0&down=0&left=1&panelRight=0) | Loader shown at the bottom of the list while loading more items |
+| mainLoaderDriver       | -         | [LoaderDriver](https://wix.github.io/wix-style-react/?selectedKind=Core&selectedStory=Loader&full=0&down=0&left=1&panelRight=0) | Main loader shown while the initial items are loading |
+| nextPageLoaderDriver   | -         | [LoaderDriver](https://wix.github.io/wix-style-react/?selectedKind=Core&selectedStory=Loader&full=0&down=0&left=1&panelRight=0) | Loader shown at the bottom of the list while loading more items |
 | cancelButtonDriver     | -         | [ButtonDriver](https://wix.github.io/wix-style-react/?selectedKind=Backoffice&selectedStory=Button&full=0&down=0&left=1&panelRight=0) | "Cancel" button                          |
 | okButtonDriver         | -         | [ButtonDriver](https://wix.github.io/wix-style-react/?selectedKind=Backoffice&selectedStory=Button&full=0&down=0&left=1&panelRight=0) | "OK" button                              |
 | searchDriver           | -         | [SearchDriver](https://wix.github.io/wix-style-react/?selectedKind=3.%20Inputs&selectedStory=3.9%20Search&full=0&down=0&left=1&panelRight=0) | Search input                             |
