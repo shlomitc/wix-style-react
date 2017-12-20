@@ -11,10 +11,6 @@ class ButtonWithOptions extends WixComponent {
     super(props);
     this.state = {showOptions: false, selectedId: props.selectedId};
 
-    this.onSelect = this.onSelect.bind(this);
-    this.hideOptions = this.hideOptions.bind(this);
-    this.showOptions = this.showOptions.bind(this);
-
     if (props.children) {
       this.sortChildren(props);
     }
@@ -45,10 +41,10 @@ class ButtonWithOptions extends WixComponent {
   }
   
   getSelectedOptionValue(props, state) {
-    const {children, skin, text} = props;
+    const {children, skin} = props;
     const {selectedId} = state;
     if (!skin || selectedId < 0) {
-      return text;
+      return children;
     }
     let value;
     const childrenArr = React.Children.toArray(children);
@@ -106,15 +102,15 @@ class ButtonWithOptions extends WixComponent {
     );
   }
 
-  hideOptions() {
+  hideOptions = () => {
     this.setState({showOptions: false});
   }
 
-  showOptions() {
+  showOptions = () => {
     this.setState({showOptions: true});
   }
 
-  onSelect(option, isSelectedOption) {
+  onSelect = (option, isSelectedOption) => {
     this.hideOptions();
 
     if (!isSelectedOption) {
