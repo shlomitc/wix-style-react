@@ -14,6 +14,11 @@ describe('Grid', () => {
       expect(element.hasClass('colXs6')).toEqual(true);
     });
 
+    it('should add col xs class when no span attribute is given and 12 is default', () => {
+      const element = mount(<Col/>);
+      expect(element.hasClass('colXs12')).toEqual(true);
+    });
+
     it('should add col sm class when using sm attribute ', () => {
       const element = mount(<Col sm="3"/>);
       expect(element.hasClass('colSm3')).toEqual(true);
