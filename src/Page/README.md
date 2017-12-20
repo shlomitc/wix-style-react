@@ -5,7 +5,6 @@ Page component is a wrapper component which allows you to use the sticky header 
 The PageHeader component is the header implementation that will be changed when scrolling down inside the page.
 
 ## Properties
-
 | propName | propType | defaultValue | isRequired | description |
 |----------|----------|--------------|------------|-------------|
 | backgroundImageUrl | string | null | false | Background image url of the header beackground |
@@ -18,3 +17,6 @@ The PageHeader component is the header implementation that will be changed when 
 | Page.Header | Page.Header | null | true | The PageHeader object which defines the components within the Header |
 | Page.Tail | Page.Tail | null | false | A placeholder for a component which sticks to the bottom of the header |
 | Page.Content | Page.Content | null | true | A placeholder for the page scrollable body |
+
+## Gradient
+You can generate Gradient CSS in here: <a href="https://www.cssmatic.com/gradient-generator">Gradient Generator</a>

@@ -20,6 +20,7 @@ class MessageBoxFunctionalLayout extends WixComponent {
       children,
       buttonsHeight,
       hideFooter,
+      footerBottomChildren,
       theme,
       closeButton,
       disableConfirmation,
@@ -36,7 +37,7 @@ class MessageBoxFunctionalLayout extends WixComponent {
         </div>
         {
           !hideFooter ?
-            <FooterLayout enableCancel={!disableCancel} enableOk={!disableConfirmation} buttonsHeight={buttonsHeight} confirmText={confirmText} cancelText={cancelText} onCancel={onCancel} onOk={onOk} theme={theme}/> : null
+            <FooterLayout bottomChildren={footerBottomChildren} enableCancel={!disableCancel} enableOk={!disableConfirmation} buttonsHeight={buttonsHeight} confirmText={confirmText} cancelText={cancelText} onCancel={onCancel} onOk={onOk} theme={theme}/> : null
         }
       </div>
     );
@@ -58,7 +59,8 @@ MessageBoxFunctionalLayout.propTypes = {
   closeButton: PropTypes.bool,
   disableCancel: PropTypes.bool,
   disableConfirmation: PropTypes.bool,
-  noBodyPadding: PropTypes.bool
+  noBodyPadding: PropTypes.bool,
+  footerBottomChildren: PropTypes.node
 };
 
 MessageBoxFunctionalLayout.defaultProps = {

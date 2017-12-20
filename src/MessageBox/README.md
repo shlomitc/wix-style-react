@@ -20,6 +20,7 @@
 | propName | propType | defaultValue | isRequired | description |
 |----------|----------|--------------|------------|-------------|
 | hideFooter | bool | - | - | Hide or show footer |
+| footerBottomChildren | node | - | - | Content to appear at the footer (below the footer's buttons) |
 | confirmText | string | - | - | Confirm button Label |
 | cancelText | string | - | - | Cancel button Label |
 | theme | string | - | - | theme of the message box, (green, blue , red) |

@@ -2,6 +2,12 @@
 
 All notable changes are documented in this file.
 
+## 1.2.10 - 2017-12-20
+### Fixed
+- fix css name collision between tooltip and button [1276](https://github.com/wix/wix-style-react/pull/1276)
+- Add background color to page header [1277](https://github.com/wix/wix-style-react/pull/1277)
+- PageHeader: update propTypes for title and subtitle [1282](https://github.com/wix/wix-style-react/pull/1282)
+
 ## 1.2.9 - 2017-12-18
 ### Fixed
 - fixed import of icon in StatsWidget [1272](https://github.com/wix/wix-style-react/pull/1272)

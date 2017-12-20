@@ -4,21 +4,27 @@ import Button from '../Backoffice/Button';
 import * as styles from './FooterLayout.scss';
 import classNames from 'classnames';
 
-const FooterLayout = ({children, theme, cancelText, onCancel, onOk, confirmText, buttonsHeight, enableOk, enableCancel, withTopPadding}) => {
+const FooterLayout = ({bottomChildren, children, theme, cancelText, onCancel, onOk, confirmText, buttonsHeight, enableOk, enableCancel, withTopPadding}) => {
 
   return (
-    <div className={classNames(styles.footer, {[styles.withTopPadding]: withTopPadding})} data-hook="message-box-footer">
-      {children}
-      <div className={styles.footerbuttons}>
-        {cancelText ?
-          <Button disabled={!enableCancel} height={buttonsHeight} theme={'empty' + theme} onClick={onCancel} dataHook="cancellation-button" >
-            {cancelText}
-          </Button> : null
-        }
-        <Button disabled={!enableOk} height={buttonsHeight} theme={'full' + theme} onClick={onOk} dataHook="confirmation-button">
-          {confirmText}
-        </Button>
+    <div>
+      <div className={classNames(styles.footer, {[styles.withTopPadding]: withTopPadding})} data-hook="message-box-footer">
+        {children}
+        <div className={styles.footerbuttons}>
+          {cancelText ?
+            <Button disabled={!enableCancel} height={buttonsHeight} theme={'empty' + theme} onClick={onCancel} dataHook="cancellation-button" >
+              {cancelText}
+            </Button> : null
+          }
+          <Button disabled={!enableOk} height={buttonsHeight} theme={'full' + theme} onClick={onOk} dataHook="confirmation-button">
+            {confirmText}
+          </Button>
+        </div>
       </div>
+      {bottomChildren ? (
+        <div className={styles.bottomChildren} data-hook="footer-layout-bottom-children">
+          {bottomChildren}
+        </div>) : null}
     </div>
   );
 };
@@ -33,6 +39,7 @@ FooterLayout.propTypes = {
   theme: PropTypes.string,
   buttonsHeight: PropTypes.string,
   children: PropTypes.any,
+  bottomChildren: PropTypes.node,
   withTopPadding: PropTypes.bool
 };
 
