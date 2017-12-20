@@ -28,8 +28,7 @@ const runButtonWithOptionsTest = driverFactory => {
     const buttonWithOptions = props => (
       <ButtonWithOptions {...props}>
         <ButtonWithOptions.Button
-          height="medium"
-          theme="icon-standard"
+          {...props}
           />
         {optionsArray}
       </ButtonWithOptions>
@@ -81,7 +80,7 @@ const runButtonWithOptionsTest = driverFactory => {
 
     describe('appearance', () => {
       it('should be possible to specify the theme of underlying elements', () => {
-        const props = {theme: 'material', dataHook: 'myDataHook'};
+        const props = {theme: 'emptybluesecondary', dataHook: 'myDataHook'};
         const wrapper = mount(buttonWithOptions(props));
         const testkit = enzymeButtonWithOptionsTestkitFactory({wrapper, dataHook: props.dataHook});
         expect(testkit.dropdownLayoutDriver.hasTheme(props.theme)).toBe(true);
@@ -108,6 +107,26 @@ const runButtonWithOptionsTest = driverFactory => {
         expect(buttonWithOptionsTestkit.driver.exists()).toBeTruthy();
         expect(buttonWithOptionsTestkit.buttonDriver.exists()).toBeTruthy();
         expect(buttonWithOptionsTestkit.dropdownLayoutDriver.exists()).toBeTruthy();
+      });
+    });
+    
+    describe('Skin props', () => {
+      let skin, props, wrapper, testkit, option;
+      
+      beforeEach(() => {
+        option = options[0];
+        skin = 'no-border';
+        props = {skin, dataHook: 'myDataHook', selectedId: option.id};
+        wrapper = mount(buttonWithOptions(props));
+        testkit = enzymeButtonWithOptionsTestkitFactory({wrapper, dataHook: props.dataHook});
+      });
+      
+      it('should have a skin props', () => {
+        expect(testkit.buttonDriver.hasSkin(skin)).toBeTruthy();
+      });
+      
+      it('button should display the same value as the "selected" option', () => {
+        expect(testkit.buttonDriver.getButtonTextContent()).toEqual(option.value);
       });
     });
   });

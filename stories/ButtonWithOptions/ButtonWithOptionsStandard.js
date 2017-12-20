@@ -30,7 +30,8 @@ class ButtonWithOptionsStandard extends Component {
     withArrow: false,
     style: {padding: '0 5px'},
     re: true,
-    hasFixedFooter: false
+    hasFixedFooter: false,
+    skin: ''
   };
 
   render() {
@@ -174,6 +175,17 @@ class ButtonWithOptionsStandard extends Component {
                 onChange={() => this.setState({restrainDropdownSize: !this.state.restrainDropdownSize})}
                 />
             </div>
+          </div>
+          <div className={styles.flex}>
+            <RadioGroup
+              display="horizontal"
+              value={this.state.skin}
+              onChange={skin => this.setState({skin})}
+              >
+              <RadioGroup.Radio value="">No Skin</RadioGroup.Radio>
+              <RadioGroup.Radio value="no-border">No Border</RadioGroup.Radio>
+              <RadioGroup.Radio value="dark-no-border">Dark No Border</RadioGroup.Radio>
+            </RadioGroup>
           </div>
         </div>
 

@@ -7,11 +7,12 @@ import styles from './ButtonLayout.scss';
   * General Buttons
   */
 const ButtonLayout = props => {
-  const {theme, hover, active, disabled, height, children, matchParent} = props;
+  const {theme, hover, active, disabled, height, children, matchParent, skin} = props;
 
   const className = classNames({
     [styles.button]: true,
     [styles[theme]]: true,
+    [styles[`skin-${skin}`]]: true,
     [styles.hover]: hover,
     [styles.active]: active,
     [styles.disabled]: disabled,
@@ -84,6 +85,11 @@ ButtonLayout.propTypes = {
     'icon-standardsecondary',
     'icon-white',
     'icon-whitesecondary'
+  ]),
+  skin: oneOf([
+    '',
+    'no-border',
+    'dark-no-border',
   ])
 };
 

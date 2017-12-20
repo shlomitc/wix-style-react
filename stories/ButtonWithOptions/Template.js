@@ -34,11 +34,9 @@ export class Form extends Component {
 
     const {dropdownTheme: theme, ...rest} = this.props;
     return (
-      <ButtonWithOptions {...rest} theme={theme}>
+      <ButtonWithOptions {...rest}>
         <ButtonWithOptions.Button
-          disabled={this.props.disabled}
-          height={this.props.height}
-          theme={this.props.theme}
+          {...this.props}
           {...icons}
           >
           {this.props.iconOnly ? <Close size={iconSize}/> : this.props.text}
@@ -47,7 +45,7 @@ export class Form extends Component {
         <ButtonWithOptions.Option id="2">Option 2</ButtonWithOptions.Option>
         <ButtonWithOptions.Option id="3" disabled>Option 3</ButtonWithOptions.Option>
         <ButtonWithOptions.Option id="4"><Close size={iconSize}/> Option 4</ButtonWithOptions.Option>
-        <ButtonWithOptions.Option id="5">Option 5</ButtonWithOptions.Option>
+        <ButtonWithOptions.Option id="5"><span>Option 5</span><Close size={iconSize}/></ButtonWithOptions.Option>
       </ButtonWithOptions>
     );
   }
@@ -63,6 +61,7 @@ Form.propTypes = {
   disabled: PropTypes.bool.isRequired,
   iconOnly: PropTypes.bool,
   text: PropTypes.string,
+  skin: PropTypes.string,
   height: PropTypes.string,
   prefixIcon: PropTypes.node,
   suffixIcon: PropTypes.node,

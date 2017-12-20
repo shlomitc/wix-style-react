@@ -15,7 +15,8 @@ class Button extends WixComponent {
     type: string,
     onClick: func,
     onMouseEnter: func,
-    onMouseLeave: func
+    onMouseLeave: func,
+    skin: string
   }
 
   static defaultProps = ButtonLayout.defaultProps;

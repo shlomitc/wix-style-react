@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
-
+import {isClassExists} from '../../../test/utils';
 const buttonDriverFactory = ({element, wrapper, component}) => {
   return {
     exists: () => !!element,
@@ -10,6 +10,7 @@ const buttonDriverFactory = ({element, wrapper, component}) => {
     isButtonDisabled: () => element.getAttribute('disabled') === '',
     isPrefixIconExists: () => element.innerHTML.indexOf('prefix') !== -1,
     isSuffixIconExists: () => element.innerHTML.indexOf('suffix') !== -1,
+    hasSkin: skin => isClassExists(element, `skin-${skin}`),
     setProps: props => {
       const ClonedWithProps = React.cloneElement(component, Object.assign({}, component.props, props), ...(component.props.children || []));
       ReactDOM.render(<div ref={r => element = r}>{ClonedWithProps}</div>, wrapper);

@@ -1,6 +1,8 @@
 @import '../common';
 @import '../Typography/Typography';
 
+$no-border-padding: 30px 54px;
+$base-transition: all 100ms linear;
 .button {
     $height: 36px;
     height: $height;
@@ -33,7 +35,7 @@
     cursor: pointer;
     outline: none;
 
-    transition: all 100ms linear;
+    transition: $base-transition;
 }
 
 .button>.inner {
@@ -592,4 +594,75 @@
     background-color: transparent;
     border-color: transparent;
     color: $D55;
+}
+
+@mixin arrow($line-width, $size, $direction, $base-color, $hover-color, $spacing) {
+    $rotation-angle: 0deg;
+
+    @if $direction == 'up' {
+        $rotation-angle: 0deg;
+    } @else if $direction == 'down' {
+        $rotation-angle: -135deg;
+    } @else if $direction == 'right' {
+        $rotation-angle: 45deg;
+    }@else if $direction == 'left' {
+        $rotation-angle: -45deg;
+    }
+
+    i {
+        $line-width: 1px;
+        $size: 6px;
+        $spacing: -2px 8px 0;
+        margin: $spacing;
+        content: '';
+        display: inline-block;
+        width: $size;
+        height: $size;
+        border-top: $line-width solid $base-color;
+        border-left: $line-width solid $base-color;
+        transform: rotate($rotation-angle);
+        transform-origin: center;
+        transition: $base-transition;
+
+        *:hover > & {
+            border-color: $hover-color;
+        }
+    }
+}
+
+.skin-no-border {
+    $bg-color: white;
+    $base-color: $paletteD1;
+    $hover-color: $paletteB1;
+
+    @include arrow(1px, 6px, 'down', $base-color, $hover-color, 0 8px);
+    background: $bg-color;
+    border: none;
+    border-radius: 0;
+    padding: $no-border-padding;
+    color: $base-color;
+    position: relative;
+
+    &:hover {
+        background: $bg-color;
+        color: $hover-color;
+    }
+}
+
+.skin-dark-no-border {
+    $bg-color: $paletteD1;
+    $base-color: white;
+    $hover-color: $paletteB1;
+
+    @include arrow(1px, 6px, 'down', $base-color, $hover-color, 0 8px);
+    background: $bg-color;
+    border: none;
+    border-radius: 0;
+    padding: $no-border-padding;
+    color: $base-color;
+
+    &:hover {
+        background: $bg-color;
+        color: $hover-color;
+    }
 }

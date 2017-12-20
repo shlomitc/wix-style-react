@@ -54,6 +54,14 @@ describe('Button', () => {
     expect(driver.isPrefixIconExists()).toBeFalsy();
     expect(driver.isSuffixIconExists()).toBeTruthy();
   });
+  
+  it('should set button text from the display text props', () => {
+    const children = 'test';
+    const skin = 'no-border';
+    const props = {skin, children};
+    const driver = createDriver(<Button {...props}/>);
+    expect(driver.getButtonTextContent()).toBe(children);
+  });
 });
 
 describe('testkit', () => {

@@ -9,7 +9,7 @@ import styles from './ButtonWithOptions.scss';
 class ButtonWithOptions extends WixComponent {
   constructor(props) {
     super(props);
-    this.state = {showOptions: false};
+    this.state = {showOptions: false, selectedId: props.selectedId};
 
     this.onSelect = this.onSelect.bind(this);
     this.hideOptions = this.hideOptions.bind(this);
@@ -28,9 +28,44 @@ class ButtonWithOptions extends WixComponent {
     [this.buttonElement, ...this.optionsElement] = React.Children.toArray(props.children);
   }
 
+  cleanOptionToSimpleTextForm(children) {
+    const supportedElements = ['string', 'span'];
+    if (typeof children === 'string') {
+      return children;
+    }
+
+    let value = [];
+    children.forEach(node => {
+      if (supportedElements.includes(node.type || typeof node)) {
+        value.push(node);
+      }
+    });
+    
+    return value;
+  }
+  
+  getSelectedOptionValue(props, state) {
+    const {children, skin, text} = props;
+    const {selectedId} = state;
+    if (!skin || selectedId < 0) {
+      return text;
+    }
+    let value;
+    const childrenArr = React.Children.toArray(children);
+    childrenArr.forEach(option => {
+      const {id, children} = option.props;
+      if (id === selectedId) {
+        value = this.cleanOptionToSimpleTextForm(children);
+      }
+    });
+    
+    return [value, <i key={1}/> ];
+  }
+  
   renderButton() {
     return React.cloneElement(this.buttonElement, {
-      onClick: this.showOptions
+      onClick: this.showOptions,
+      children: this.getSelectedOptionValue(this.props, this.state)
     });
   }
 
@@ -49,7 +84,10 @@ class ButtonWithOptions extends WixComponent {
         options={dropdownLayoutOptions}
         theme={this.props.theme}
         visible={this.state.showOptions}
-        onSelect={this.onSelect}
+        onSelect={(option, isSelectedOption) => {
+          this.setState({selectedId: option.id});
+          this.onSelect(option, isSelectedOption);
+        }}
         onClickOutside={this.hideOptions}
         />
     );
@@ -88,7 +126,8 @@ class ButtonWithOptions extends WixComponent {
 ButtonWithOptions.defaultProps = {
   ...DropdownLayout.defaultProps,
   onSelect: () => {},
-  restrainDropdownSize: true
+  restrainDropdownSize: true,
+  skin: ''
 };
 
 ButtonWithOptions.propTypes = {
@@ -106,7 +145,8 @@ ButtonWithOptions.propTypes = {
         }
       });
     }
-  })
+  }),
+  skin: PropTypes.string
 };
 
 ButtonWithOptions.Option = () => null;
