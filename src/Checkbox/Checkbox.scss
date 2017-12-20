@@ -31,6 +31,7 @@
   min-width: 16px;
   height: 16px;
   min-height: 16px;
+  border: 1px solid $B10;
   border-radius: 4px;
   box-sizing: border-box;
 }
@@ -42,11 +43,11 @@
   .inner {
     width: 18px;
     height: 18px;
+  }
 
-    > svg {
-      width: 13px;
-      height: 13px;
-    }
+  .inner > svg {
+    width: 13px;
+    height: 13px;
   }
 }
 
@@ -59,11 +60,15 @@
   left: 0;
   width: 14px;
   height: 14px;
+  color: $D80;
 
   > svg {
     width: 9px;
     height: 9px;
-    fill: $D80;
+  }
+
+  > svg > path {
+    fill: #fff;
   }
 }
 
@@ -76,7 +81,6 @@
 /* Checked State */
 .checked {
   .checkbox {
-    border: 1px solid $B10;
     background-color: $B10;
 
     .inner {
@@ -88,30 +92,30 @@
 /* Unchecked State */
 
 .unchecked {
+  &:hover,
+  &.hover {
+    .checkbox {
+      background-color: $B40;
+    }
+  }
+
+  &:active,
+  &.active {
+    .checkbox {
+      background-color: $B20;
+
+      .inner {
+        opacity: 1;
+      }
+    }
+  }
+
   .checkbox {
-    border: 1px solid $B20;
     background-color: $D80;
 
     .inner {
       opacity: 0;
     }
-  }
-
-  &.hover .checkbox, .checkbox:hover {
-    background-color: $B50;
-  }
-
-  &.active .checkbox, .checkbox:active {
-    .inner {
-      opacity: 1;
-    }
-  }
-}
-
-.unchecked, .checked {
-  &.active .checkbox, .checkbox:active {
-    border: 1px solid $B20;
-    background-color: $B20;
   }
 }
 
@@ -119,21 +123,13 @@
   pointer-events: none;
   cursor: default;
 
+  &.checked .checkbox {
+    background-color: $GR20;
+  }
+
   .checkbox {
     border-color: $GR20;
     background-color: $D70;
-  }
-
-  &.checked .checkbox {
-    border-color: $D60;
-
-    .inner > svg {
-      fill: $D55;
-    }
-
-    .inner .indeterminate {
-      background-color: $D55;
-    }
   }
 }
 

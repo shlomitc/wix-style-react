@@ -19,8 +19,7 @@ export default class Search extends WixComponent {
   };
 
   static defaultProps = {
-    ...InputWithOptions.defaultProps,
-    placeholder: 'Search'
+    ...InputWithOptions.defaultProps
   };
 
   constructor(props) {
@@ -72,6 +71,7 @@ export default class Search extends WixComponent {
   render() {
     return (
       <InputWithOptions
+        placeholder="Search"
         {...this.props}
         ref="searchInput"
         roundInput

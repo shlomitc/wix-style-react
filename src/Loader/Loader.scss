@@ -29,6 +29,7 @@
     stroke: $B00;
   }
 
+  .lightArcContainer,
   .lightArc,
   .darkArc {
     position: absolute;
@@ -50,6 +51,8 @@
 
   &.small {
     .arcsContainer {
+      width: 30px;
+      height: 30px;
 
       .lightArc {
         animation: rotation 2s linear infinite;
@@ -63,20 +66,32 @@
 
   &.medium {
     .arcsContainer {
-      animation: rotation 2s linear infinite;
+      width: 54px;
+      height: 54px;
 
       .lightArc {
         animation: rotation 666ms ease-in-out infinite;
+      }
+
+      .lightArcContainer,
+      .darkArc {
+        animation: rotation 2s linear infinite;
       }
     }
   }
 
   &.large {
     .arcsContainer {
-      animation: rotation 2s linear infinite;
+      width: 102px;
+      height: 102px;
 
       .lightArc {
         animation: staggered-rotation 2s ease-in-out infinite;
+      }
+
+      .lightArcContainer,
+      .darkArc {
+        animation: rotation 2s linear infinite;
       }
     }
   }
