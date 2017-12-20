@@ -40,6 +40,18 @@ describe('Page', () => {
     });
   });
 
+  describe('gradientClassName', () => {
+    it('should initialize component with gradient class name', () => {
+      const driver = createDriver(renderPageWithProps({gradientClassName: 'class'}));
+      expect(driver.gradientClassNameExists()).toBeTruthy();
+    });
+
+    it('should not initialize component with gradiet class name by default', () => {
+      const driver = createDriver(renderPageWithProps());
+      expect(driver.gradientClassNameExists()).toBeFalsy();
+    });
+  });
+
   describe('Page.Tail', () => {
     it('should attach a tail component', () => {
       const driver = createDriver(

@@ -133,6 +133,24 @@ describe('MessageBox', () => {
     });
   });
 
+  describe('footer children', () => {
+    it(`should render the passed footer content`, () => {
+      const props = {
+        footerBottomChildren: (<div data-hook="inner-div"/>)
+      };
+      const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
+      expect(driver.getChildBySelector('[data-hook="inner-div"]')).not.toBeNull();
+      expect(driver.getChildBySelector('[data-hook="footer-layout-bottom-children"]')).not.toBeNull();
+    });
+
+    it(`should not render footer's wrapper div when footer content isn't passed`, () => {
+      const props = {
+      };
+      const driver = createDriver(<MessageBoxFunctionalLayout {...props}/>);
+      expect(driver.getChildBySelector('[data-hook="footer-layout-bottom-children"]')).toBeNull();
+    });
+  });
+
   describe('general', () => {
 
     it(`should hide the footer`, () => {

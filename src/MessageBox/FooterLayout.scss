@@ -1,8 +1,21 @@
+@import '../common.scss';
+
 .footer
 {
     padding     : 0 30px 30px 0;
     display     : flex;
     align-items : center;
+}
+
+.bottomChildren{
+  min-height: 42px;
+  border-radius: 0 0 8px 8px;
+  background-color: $D70;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 30px 14px 30px;
+  margin-top: -12px;
 }
 
 .footerbuttons

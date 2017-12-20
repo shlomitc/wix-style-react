@@ -6,7 +6,6 @@ import Button from '../../src/Backoffice/Button';
 import SomeContentComponent from './SomeContentComponent';
 import Breadcrumbs from './Breadcrumbs';
 import SomeTailComponent from './SomeTailComponent';
-
 import s from './Page.scss';
 
 const header = (
@@ -42,13 +41,16 @@ story({
   componentSrcFolder: 'Page',
   componentProps: {
     children: [header, tail, content],
-    dataHook: 'story-page'
+    dataHook: 'story-page',
+    gradientClassName: s.backgroundGradient,
+    backgroundImageUrl: 'https://static.wixstatic.com/media/a9ff3b_9928686dcfa740bd802821d0b6f4ac03.jpg/v1/fill/w_1000,h_250,al_c,q_85,usm_0.66_1.00_0.01/a9ff3b_9928686dcfa740bd802821d0b6f4ac03.jpg'
   },
   exampleProps: {
     backgroundImageUrl: [
       '',
       'https://static.wixstatic.com/media/a9ff3b_9928686dcfa740bd802821d0b6f4ac03.jpg/v1/fill/w_1000,h_250,al_c,q_85,usm_0.66_1.00_0.01/a9ff3b_9928686dcfa740bd802821d0b6f4ac03.jpg'
-    ]
+    ],
+    gradientClassName: ['', s.backgroundGradient]
   }
 });
 
