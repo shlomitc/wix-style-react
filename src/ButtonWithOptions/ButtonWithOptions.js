@@ -5,8 +5,7 @@ import omit from 'lodash/omit';
 import DropdownLayout from '../DropdownLayout/DropdownLayout';
 import Button from '../Button';
 import styles from './ButtonWithOptions.scss';
-
-const NONE_SKIN = 'none';
+import {NO_BORDER_THEME, DARK_NO_BORDER_THEME} from '../ButtonLayout/utils';
 
 class ButtonWithOptions extends WixComponent {
   constructor(props) {
@@ -46,8 +45,8 @@ class ButtonWithOptions extends WixComponent {
   getSelectedOptionValue(props) {
     const {children} = props;
     const {selectedId} = this.state;
-    const {skin} = this.props;
-    if (skin === NONE_SKIN || selectedId < 0) {
+    const {theme} = this.props;
+    if (![NO_BORDER_THEME, DARK_NO_BORDER_THEME].includes(theme) || selectedId < 0) {
       return children;
     }
     let value;
@@ -65,7 +64,7 @@ class ButtonWithOptions extends WixComponent {
     return React.cloneElement(this.buttonElement, {
       onClick: this.showOptions,
       children: this.getSelectedOptionValue(this.buttonElement.props),
-      theme: this.props.skin === NONE_SKIN ? this.props.theme : this.props.skin
+      theme: this.props.theme
     });
   }
 
@@ -126,8 +125,7 @@ class ButtonWithOptions extends WixComponent {
 ButtonWithOptions.defaultProps = {
   ...DropdownLayout.defaultProps,
   onSelect: () => {},
-  restrainDropdownSize: true,
-  skin: NONE_SKIN
+  restrainDropdownSize: true
 };
 
 ButtonWithOptions.propTypes = {
@@ -145,12 +143,7 @@ ButtonWithOptions.propTypes = {
         }
       });
     }
-  }),
-  skin: PropTypes.oneOf([
-    NONE_SKIN,
-    'no-border',
-    'dark-no-border',
-  ])
+  })
 };
 
 ButtonWithOptions.Option = () => null;

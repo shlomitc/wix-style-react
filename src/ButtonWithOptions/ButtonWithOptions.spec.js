@@ -112,21 +112,17 @@ const runButtonWithOptionsTest = driverFactory => {
       });
     });
     
-    describe('Skin props', () => {
-      let skin, props, wrapper, testkit, option;
+    describe('Dynamic button theme', () => {
+      let theme, props, wrapper, testkit, option;
       
       beforeEach(() => {
         option = options[0];
-        skin = 'no-border';
-        props = {skin, dataHook: 'myDataHook', selectedId: option.id};
+        theme = 'no-border';
+        props = {theme, dataHook: 'myDataHook', selectedId: option.id};
         wrapper = mount(buttonWithOptions(props));
         testkit = enzymeButtonWithOptionsTestkitFactory({wrapper, dataHook: props.dataHook});
       });
-      
-      it('should have a skin props', () => {
-        expect(testkit.buttonDriver.hasTheme(skin)).toBeTruthy();
-      });
-      
+     
       it('button should display the same value as the "selected" option', () => {
         expect(testkit.buttonDriver.getButtonTextContent()).toEqual(option.value);
       });
@@ -134,7 +130,7 @@ const runButtonWithOptionsTest = driverFactory => {
       it('button should display the same value as the "selected" option that has span', () => {
         const expectedValue = 'Option 4';
         option = options[5];
-        props = {skin, dataHook: 'myDataHook', selectedId: option.id};
+        props = {theme, dataHook: 'myDataHook', selectedId: option.id};
         wrapper = mount(buttonWithOptions(props));
         testkit = enzymeButtonWithOptionsTestkitFactory({wrapper, dataHook: props.dataHook});
         expect(testkit.buttonDriver.getButtonTextContent()).toEqual(expectedValue);

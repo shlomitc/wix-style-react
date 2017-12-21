@@ -2,12 +2,12 @@ import React from 'react';
 import {any, bool, oneOf} from 'prop-types';
 import classNames from 'classnames';
 import styles from './ButtonLayout.scss';
-
+import {NO_BORDER_THEME, DARK_NO_BORDER_THEME} from './utils';
 /**
   * General Buttons
   */
 const ButtonLayout = props => {
-  const {theme, hover, active, disabled, height, children, matchParent, skin} = props;
+  const {theme, hover, active, disabled, height, children, matchParent} = props;
 
   const className = classNames({
     [styles.button]: true,
@@ -84,8 +84,8 @@ ButtonLayout.propTypes = {
     'icon-standardsecondary',
     'icon-white',
     'icon-whitesecondary',
-    'no-border',
-    'dark-no-border'
+    NO_BORDER_THEME,
+    DARK_NO_BORDER_THEME
   ])
 };
 
