@@ -6,6 +6,8 @@ import DropdownLayout from '../DropdownLayout/DropdownLayout';
 import Button from '../Button';
 import styles from './ButtonWithOptions.scss';
 
+const NONE_SKIN = 'none';
+
 class ButtonWithOptions extends WixComponent {
   constructor(props) {
     super(props);
@@ -31,6 +33,7 @@ class ButtonWithOptions extends WixComponent {
     }
 
     let value = [];
+    children = Array.isArray(children) ? children : [children];
     children.forEach(node => {
       if (supportedElements.includes(node.type || typeof node)) {
         value.push(node);
@@ -40,28 +43,29 @@ class ButtonWithOptions extends WixComponent {
     return value;
   }
   
-  getSelectedOptionValue(props, state) {
-    const {children, skin} = props;
-    const {selectedId} = state;
-    if (!skin || selectedId < 0) {
+  getSelectedOptionValue(props) {
+    const {children} = props;
+    const {selectedId} = this.state;
+    const {skin} = this.props;
+    if (skin === NONE_SKIN || selectedId < 0) {
       return children;
     }
     let value;
-    const childrenArr = React.Children.toArray(children);
+    const childrenArr = React.Children.toArray(this.props.children);
     childrenArr.forEach(option => {
       const {id, children} = option.props;
       if (id === selectedId) {
         value = this.cleanOptionToSimpleTextForm(children);
       }
     });
-    
-    return [value, <i key={1}/> ];
+    return [value, <i key={1}/>];
   }
   
   renderButton() {
     return React.cloneElement(this.buttonElement, {
       onClick: this.showOptions,
-      children: this.getSelectedOptionValue(this.props, this.state)
+      children: this.getSelectedOptionValue(this.buttonElement.props),
+      theme: this.props.skin === NONE_SKIN ? this.props.theme : this.props.skin
     });
   }
 
@@ -123,7 +127,7 @@ ButtonWithOptions.defaultProps = {
   ...DropdownLayout.defaultProps,
   onSelect: () => {},
   restrainDropdownSize: true,
-  skin: ''
+  skin: NONE_SKIN
 };
 
 ButtonWithOptions.propTypes = {
@@ -142,7 +146,11 @@ ButtonWithOptions.propTypes = {
       });
     }
   }),
-  skin: PropTypes.string
+  skin: PropTypes.oneOf([
+    NONE_SKIN,
+    'no-border',
+    'dark-no-border',
+  ])
 };
 
 ButtonWithOptions.Option = () => null;

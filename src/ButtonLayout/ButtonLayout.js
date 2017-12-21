@@ -12,7 +12,6 @@ const ButtonLayout = props => {
   const className = classNames({
     [styles.button]: true,
     [styles[theme]]: true,
-    [styles[`skin-${skin}`]]: true,
     [styles.hover]: hover,
     [styles.active]: active,
     [styles.disabled]: disabled,
@@ -84,12 +83,9 @@ ButtonLayout.propTypes = {
     'icon-standard',
     'icon-standardsecondary',
     'icon-white',
-    'icon-whitesecondary'
-  ]),
-  skin: oneOf([
-    '',
+    'icon-whitesecondary',
     'no-border',
-    'dark-no-border',
+    'dark-no-border'
   ])
 };
 

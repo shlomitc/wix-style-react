@@ -29,7 +29,9 @@ const runButtonWithOptionsTest = driverFactory => {
       <ButtonWithOptions {...props}>
         <ButtonWithOptions.Button
           {...props}
-          />
+          >
+          Test
+        </ButtonWithOptions.Button>
         {optionsArray}
       </ButtonWithOptions>
     );
@@ -122,11 +124,20 @@ const runButtonWithOptionsTest = driverFactory => {
       });
       
       it('should have a skin props', () => {
-        expect(testkit.buttonDriver.hasSkin(skin)).toBeTruthy();
+        expect(testkit.buttonDriver.hasTheme(skin)).toBeTruthy();
       });
       
       it('button should display the same value as the "selected" option', () => {
         expect(testkit.buttonDriver.getButtonTextContent()).toEqual(option.value);
+      });
+
+      it('button should display the same value as the "selected" option that has span', () => {
+        const expectedValue = 'Option 4';
+        option = options[5];
+        props = {skin, dataHook: 'myDataHook', selectedId: option.id};
+        wrapper = mount(buttonWithOptions(props));
+        testkit = enzymeButtonWithOptionsTestkitFactory({wrapper, dataHook: props.dataHook});
+        expect(testkit.buttonDriver.getButtonTextContent()).toEqual(expectedValue);
       });
     });
   });

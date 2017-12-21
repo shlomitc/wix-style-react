@@ -540,6 +540,8 @@ $base-transition: all 100ms linear;
     color: $B10;
 }
 
+.button.no-border.disabled,
+.button.dark-no-border.disabled,
 .button.transparent.disabled,
 .button.fullred.disabled,
 .button.fullgreen.disabled,
@@ -596,7 +598,7 @@ $base-transition: all 100ms linear;
     color: $D55;
 }
 
-@mixin arrow($line-width, $size, $direction, $base-color, $hover-color, $spacing) {
+@mixin arrow($line-width, $size, $direction, $spacing) {
     $rotation-angle: 0deg;
 
     @if $direction == 'up' {
@@ -618,47 +620,51 @@ $base-transition: all 100ms linear;
         display: inline-block;
         width: $size;
         height: $size;
-        border-top: $line-width solid $base-color;
-        border-left: $line-width solid $base-color;
+        border-top: $line-width solid;
+        border-left: $line-width solid;
         transform: rotate($rotation-angle);
         transform-origin: center;
-        transition: $base-transition;
-
-        *:hover > & {
-            border-color: $hover-color;
-        }
     }
 }
 
-.skin-no-border {
-    $bg-color: white;
-    $base-color: $paletteD1;
-    $hover-color: $paletteB1;
+.no-border {
+    @include arrow(1px, 6px, 'down', 0 8px);
 
-    @include arrow(1px, 6px, 'down', $base-color, $hover-color, 0 8px);
-    background: $bg-color;
+    @extend .t1_2;
+    &.heightx-large {
+        font-size: 20px;
+    }
+    &.heightsmall {
+        @extend .t3_2;
+    }
+    background: transparent;
+    color: $paletteD1;
     border: none;
     border-radius: 0;
-    padding: $no-border-padding;
-    color: $base-color;
     position: relative;
 
     &:hover {
-        background: $bg-color;
-        color: $hover-color;
+        color: $paletteB1;
     }
 }
 
-.skin-dark-no-border {
+.dark-no-border {
     $bg-color: $paletteD1;
     $base-color: white;
     $hover-color: $paletteB1;
 
-    @include arrow(1px, 6px, 'down', $base-color, $hover-color, 0 8px);
+    @include arrow(1px, 6px, 'down', 0 8px);
+    @extend .t1_2;
+    &.heightx-large {
+        font-size: 20px;
+    }
+    &.heightsmall {
+        @extend .t3_2;
+    }
+
     background: $bg-color;
     border: none;
     border-radius: 0;
-    padding: $no-border-padding;
     color: $base-color;
 
     &:hover {

@@ -10,7 +10,7 @@ const buttonDriverFactory = ({element, wrapper, component}) => {
     isButtonDisabled: () => element.getAttribute('disabled') === '',
     isPrefixIconExists: () => element.innerHTML.indexOf('prefix') !== -1,
     isSuffixIconExists: () => element.innerHTML.indexOf('suffix') !== -1,
-    hasSkin: skin => isClassExists(element, `skin-${skin}`),
+    hasTheme: theme => isClassExists(element, theme),
     setProps: props => {
       const ClonedWithProps = React.cloneElement(component, Object.assign({}, component.props, props), ...(component.props.children || []));
       ReactDOM.render(<div ref={r => element = r}>{ClonedWithProps}</div>, wrapper);
